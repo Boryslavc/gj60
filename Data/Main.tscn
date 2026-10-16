@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c1i1hc7qb6u8e"]
+
+[ext_resource type="PackedScene" uid="uid://tcujdfv68u1q" path="res://Data/Player/Player.tscn" id="1_ebypj"]
+[ext_resource type="Script" uid="uid://01l2bs3x3jmp" path="res://Data/Player/camera_2d.gd" id="2_so8ww"]
+
+[node name="Main" type="Node2D" unique_id=1309701960]
+
+[node name="Player" parent="." unique_id=1263876198 instance=ExtResource("1_ebypj")]
+position = Vector2(121, 287)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1823881639 node_paths=PackedStringArray("follow_target")]
+script = ExtResource("2_so8ww")
+follow_target = NodePath("../Player/FollowTarget")
+padding = Vector2(10, 10)
+
+[editable path="Player"]

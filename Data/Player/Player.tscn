@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://tcujdfv68u1q"]
+
+[ext_resource type="Texture2D" uid="uid://brfbvaygpgv4r" path="res://icon.svg" id="1_marfc"]
+[ext_resource type="Script" uid="uid://cnvpiky6dxbty" path="res://Data/Player/player.gd" id="1_o0p0d"]
+[ext_resource type="PackedScene" uid="uid://cs5h1ctduqxqv" path="res://Data/Particles/fire.tscn" id="3_p0gy3"]
+[ext_resource type="PackedScene" uid="uid://carf6gmsridye" path="res://Data/Player/ui.tscn" id="4_x8ab7"]
+[ext_resource type="Theme" uid="uid://pq4bga7u0c3f" path="res://Assets/base_theme.tres" id="5_ipw5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw308"]
+size = Vector2(127, 125)
+
+[node name="Player" type="CharacterBody2D" unique_id=1263876198]
+script = ExtResource("1_o0p0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1317612103]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_sw308")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=35406751]
+texture = ExtResource("1_marfc")
+
+[node name="FollowTarget" type="Marker2D" parent="." unique_id=1840121728]
+position = Vector2(0, -188)
+
+[node name="Fire" parent="." unique_id=1265232777 instance=ExtResource("3_p0gy3")]
+position = Vector2(-2, 66)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2081751151]
+
+[node name="UI" parent="CanvasLayer" unique_id=1598766862 instance=ExtResource("4_x8ab7")]
+theme = ExtResource("5_ipw5p")
