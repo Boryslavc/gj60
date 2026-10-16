@@ -16,12 +16,19 @@ var target_throttle : float = 0.0
 @export_subgroup("Fuel")
 @export var fuel_max : float = 100.0
 @export var current_fuel : float = 100.0
+@export var fuel_depletion_rate : float = 1.0
 
 func _ready() -> void:
 	throttle = 0.0
 	_set_labels()
+	_set_stats()
 
 func _physics_process(delta: float) -> void:
+	_handle_forces(delta)
+	_handle_movement(delta)
+	move_and_slide()
+
+func _handle_forces(delta) -> void:
 	var rotation_dir = Input.get_axis("left", "right")
 	rotation += rotation_dir * rotation_speed * delta
 
@@ -37,12 +44,21 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("cut_throttle"):
 		target_throttle = 0.0
 
-	_handle_movement(delta)
-	move_and_slide()
+func _unhandled_input(event: InputEvent) -> void:
+	if current_fuel == 0.0:
+		SignalBus.emit_signal("fuel_depleted")
 
 func _handle_movement(delta : float) -> void:
+	# TODO add refueling
+	if current_fuel <= 0.0:
+		target_throttle = 0.0
+
 	var rate := throttle_accel if target_throttle > throttle else throttle_decel
 	throttle = move_toward(throttle, target_throttle, rate * delta)
+
+	# Burn proportional fuel
+	#if throttle > 0.0:
+
 
 	# Apply velocity to ship facing direction
 	var forward := Vector2.UP.rotated(rotation) # Assuming the sprite faces up
@@ -50,3 +66,7 @@ func _handle_movement(delta : float) -> void:
 
 func _set_labels() -> void:
 	pass
+
+func _set_stats() -> void:
+	current_fuel = fuel_max
+	SignalBus.emit_signal("update_fuel", current_fuel)
