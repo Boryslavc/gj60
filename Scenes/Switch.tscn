@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1n8diqhtqape"]
+
+[ext_resource type="Script" uid="uid://jrt8p6l50g00" path="res://Data/Conveyor/switch.gd" id="1_e7dmm"]
+
+[node name="Switch" type="Node2D" unique_id=2032465549]
+script = ExtResource("1_e7dmm")
