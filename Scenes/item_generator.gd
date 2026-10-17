@@ -1,12 +1,14 @@
 extends Node2D
 
-@export var output_ports: Array[Sprite2D] = []
+@export var output_ports: Array[Node2D] = []
 @export var trash_port_count: int
 @export var metal_port_count: int
 @export var spawn_interval = 2
 
-var trash_item: PackedScene
-var metal_item: PackedScene
+var item: PackedScene = load("res://Scenes/item.tscn")
+
+var trash_sprite = load("res://Assets/cardboard.png")
+var metal_sprite = load("res://Assets/rocketPiece1.png")
 
 var timers: Array[Timer] = []
 
@@ -15,10 +17,7 @@ var metal_ports_free
 
 var rng := RandomNumberGenerator.new()
 
-func _ready() -> void:
-	trash_item = load("res://Scenes/trash_item.tscn")
-	metal_item = load("res://Scenes/MetalItem.tscn")
-	
+func _ready() -> void:	
 	trash_ports_free = trash_port_count
 	metal_ports_free = metal_port_count
 	
@@ -59,14 +58,20 @@ func _on_timer_timeout() -> void:
 	
 func _spawn_metal_part():
 	var output_port_number = _pick_random_output_port()
-	var metal_part = metal_item.instantiate()
+	var metal_part = item.instantiate()
+	var texture_m = metal_part.get_child(0) as Sprite2D
+	texture_m.texture = metal_sprite
+	
 	var port = output_ports[output_port_number]
 	metal_part.position = port.position + Vector2(0, -10)#assuming all output ports are at the bottom
 	add_child(metal_part)
 	
 func _spawn_trash_part():
 	var output_port_number = _pick_random_output_port()
-	var trash_past = trash_item.instantiate()
+	var trash_past = item.instantiate()
+	var texture_t = trash_past.get_child(0) as Sprite2D
+	texture_t.texture = trash_sprite
+	
 	var port = output_ports[output_port_number]
 	trash_past.position = port.position + Vector2(0, -10)
 	add_child(trash_past)

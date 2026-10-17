@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bo0k6dkr63jre"]
-
-[ext_resource type="Texture2D" uid="uid://brfbvaygpgv4r" path="res://icon.svg" id="1_uxeap"]
-
-[node name="MetalItem" type="Node2D" unique_id=61632987]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1702636165]
-modulate = Color(0.46365625, 0.9671138, 0.9999998, 1)
-texture = ExtResource("1_uxeap")
