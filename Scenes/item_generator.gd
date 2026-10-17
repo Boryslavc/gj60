@@ -15,6 +15,12 @@ var metal_ports_free
 var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
+	trash_item = load("res://Scenes/trash_item.tscn")
+	metal_item = load("res://Scenes/MetalItem.tscn")
+	
+	trash_ports_free = trash_port_count
+	metal_ports_free = metal_port_count
+	
 	for x in trash_port_count:
 		var timer = Timer.new()
 		add_child(timer)
@@ -35,15 +41,17 @@ func _on_timer_timeout() -> void:
 	
 func _spawn_metal_part():
 	var output_port_number = _pick_random_output_port()
-	metal_item.instantiate()
+	var metal_part = metal_item.instantiate()
 	var port = output_ports[output_port_number]
-	metal_item.position = port.position + Vector2(0, -10)
+	metal_part.position = port.position + Vector2(0, -10)
+	add_child(metal_part)
 	
 func _spawn_trash_part():
 	var output_port_number = _pick_random_output_port()
-	trash_item.instantiate()
+	var trash_past = trash_item.instantiate()
 	var port = output_ports[output_port_number]
-	trash_item.position = port.position + Vector2(0, -10)
+	trash_past.position = port.position + Vector2(0, -10)
+	add_child(trash_past)
 	
 func _pick_random_output_port():
 	return rng.randi_range(0, output_ports.size() - 1)
@@ -55,7 +63,7 @@ func _on_port_fed(port_type,timeout):
 		metal_ports_free -= 1
 	
 	for timer in timers:
-		if !timer.is_stopped():
+		if timer.is_stopped():
 			timer.wait_time = timeout
 			timer.timeout.connect(_on_port_freed_up.bind(port_type), CONNECT_ONE_SHOT)
 			timer.start()
