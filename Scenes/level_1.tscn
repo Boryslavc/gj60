@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c2b5w240vhit6"]
+
+[ext_resource type="Script" uid="uid://bg2tvbxvf4w8j" path="res://Scenes/item_generator.gd" id="1_vk57k"]
+
+[node name="Level1" type="Node2D" unique_id=300776629]
+
+[node name="ItemGenerator" type="Node2D" parent="." unique_id=959587035]
+script = ExtResource("1_vk57k")
+
+[node name="Timer" type="Timer" parent="ItemGenerator" unique_id=488371424]
+wait_time = 2.0
+
+[connection signal="timeout" from="ItemGenerator/Timer" to="ItemGenerator" method="_on_timer_timeout"]
