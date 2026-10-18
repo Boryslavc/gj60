@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2v54nnremtd"
-path="res://.godot/imported/cardboard.png-76c7ff7836a2c59ca1dc08e2197ea4f2.ctex"
+uid="uid://c004qp3126x1o"
+path="res://.godot/imported/rocketPiece3_72px.png-80c5d7f9bda205ac584460db9d810995.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/cardboard.png"
-dest_files=["res://.godot/imported/cardboard.png-76c7ff7836a2c59ca1dc08e2197ea4f2.ctex"]
+source_file="res://Assets/Sprites/rocketPiece3_72px.png"
+dest_files=["res://.godot/imported/rocketPiece3_72px.png-80c5d7f9bda205ac584460db9d810995.ctex"]
 
 [params]
 

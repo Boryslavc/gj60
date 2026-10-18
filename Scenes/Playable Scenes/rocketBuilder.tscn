@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dsige7vuw3ta3"]
 
-[ext_resource type="Texture2D" uid="uid://4jfj3kc55yl6" path="res://Assets/rocketPiece1.png" id="1_gdas6"]
-[ext_resource type="Texture2D" uid="uid://ypef18gyk12s" path="res://Assets/rocketPiece5.png" id="2_yewrn"]
-[ext_resource type="Texture2D" uid="uid://duvjeykdvx1fk" path="res://Assets/rocketPiece2.png" id="3_7la4g"]
-[ext_resource type="Texture2D" uid="uid://dx58crmxsvqfa" path="res://Assets/rocketPiece3.png" id="4_lfxc7"]
-[ext_resource type="Texture2D" uid="uid://dg5brcdhakrjw" path="res://Assets/rocketPiece4.png" id="5_7ifls"]
-[ext_resource type="Texture2D" uid="uid://dqftrgwcn1weq" path="res://Assets/battery.png" id="6_okd4h"]
-[ext_resource type="Texture2D" uid="uid://c4rdn4nb6yvv6" path="res://Assets/wrench.png" id="7_7ivsu"]
-[ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/cardboard.png" id="8_3qxmg"]
-[ext_resource type="Texture2D" uid="uid://bvwu5ncrxa2f" path="res://Assets/pizza.png" id="9_1ojab"]
+[ext_resource type="Texture2D" uid="uid://4jfj3kc55yl6" path="res://Assets/Sprites/rocketPiece1.png" id="1_a87kr"]
+[ext_resource type="Texture2D" uid="uid://ypef18gyk12s" path="res://Assets/Sprites/rocketPiece5.png" id="2_s1rlv"]
+[ext_resource type="Texture2D" uid="uid://duvjeykdvx1fk" path="res://Assets/Sprites/rocketPiece2.png" id="3_4lfbd"]
+[ext_resource type="Texture2D" uid="uid://dx58crmxsvqfa" path="res://Assets/Sprites/rocketPiece3.png" id="4_7h4eq"]
+[ext_resource type="Texture2D" uid="uid://dg5brcdhakrjw" path="res://Assets/Sprites/rocketPiece4.png" id="5_vbgqa"]
+[ext_resource type="Texture2D" uid="uid://dqftrgwcn1weq" path="res://Assets/Sprites/battery.png" id="6_a87kr"]
+[ext_resource type="Texture2D" uid="uid://c4rdn4nb6yvv6" path="res://Assets/Sprites/wrench.png" id="7_57xxu"]
+[ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="8_a87kr"]
+[ext_resource type="Texture2D" uid="uid://bvwu5ncrxa2f" path="res://Assets/Sprites/pizza.png" id="9_a87kr"]
 
 [node name="RocketBuilder" type="Node2D" unique_id=431214620]
 
@@ -16,33 +16,33 @@
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(10, 10)
-texture = ExtResource("1_gdas6")
+texture = ExtResource("1_a87kr")
 
 [node name="RocketPiece5" type="TextureRect" parent="." unique_id=1909862139]
 visible = false
 offset_right = 128.0
 offset_bottom = 128.0
 scale = Vector2(10, 10)
-texture = ExtResource("2_yewrn")
+texture = ExtResource("2_s1rlv")
 
 [node name="RocketPiece2" type="TextureRect" parent="." unique_id=1128795211]
 offset_right = 128.0
 offset_bottom = 128.0
 scale = Vector2(10, 10)
-texture = ExtResource("3_7la4g")
+texture = ExtResource("3_4lfbd")
 
 [node name="RocketPiece3" type="TextureRect" parent="." unique_id=765035084]
 visible = false
 offset_right = 128.0
 offset_bottom = 128.0
 scale = Vector2(10, 10)
-texture = ExtResource("4_lfxc7")
+texture = ExtResource("4_7h4eq")
 
 [node name="RocketPiece4" type="TextureRect" parent="." unique_id=1760208444]
 offset_right = 128.0
 offset_bottom = 128.0
 scale = Vector2(10, 10)
-texture = ExtResource("5_7ifls")
+texture = ExtResource("5_vbgqa")
 
 [node name="TrashPiece5" type="TextureRect" parent="." unique_id=1471407314]
 offset_left = 646.0
@@ -50,7 +50,7 @@ offset_top = 248.0
 offset_right = 718.0
 offset_bottom = 320.0
 scale = Vector2(9, 9)
-texture = ExtResource("6_okd4h")
+texture = ExtResource("6_a87kr")
 
 [node name="TrashPiece2" type="TextureRect" parent="." unique_id=1684396072]
 visible = false
@@ -59,7 +59,7 @@ offset_top = 238.99998
 offset_right = 129.00012
 offset_bottom = 367.0
 scale = Vector2(5, 5)
-texture = ExtResource("7_7ivsu")
+texture = ExtResource("7_57xxu")
 
 [node name="TrashPiece4" type="TextureRect" parent="." unique_id=344052880]
 visible = false
@@ -68,7 +68,7 @@ offset_top = 499.00006
 offset_right = 592.00006
 offset_bottom = 571.00006
 scale = Vector2(10, 10)
-texture = ExtResource("8_3qxmg")
+texture = ExtResource("8_a87kr")
 
 [node name="TrashPiece3" type="TextureRect" parent="." unique_id=889042374]
 offset_left = 69.00049
@@ -76,4 +76,4 @@ offset_top = 521.0
 offset_right = 141.00049
 offset_bottom = 593.0
 scale = Vector2(10, 10)
-texture = ExtResource("9_1ojab")
+texture = ExtResource("9_a87kr")
