@@ -11,7 +11,7 @@ const LEVELS: Array[String] = [
 const MAIN_MENU := "res://Scenes/Playable Scenes/MainMenu.tscn"
 ## Loaded after the last level.
 const CREDITS := "res://Scenes/Playable Scenes/Credits.tscn"
-const ROCKET := "res://Scenes/finalRocketAnimation.tscn"
+const ROCKET := "res://Scenes/Playable Scenes/finalRocketAnimation.tscn"
 
 signal level_started(index: int)
 

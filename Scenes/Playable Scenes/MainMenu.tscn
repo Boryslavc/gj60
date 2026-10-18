@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://laq4fqv6rrx3" path="res://Data/main_menu.gd" id="1_kvfcw"]
 [ext_resource type="Theme" uid="uid://pq4bga7u0c3f" path="res://Assets/base_theme.tres" id="1_kxa36"]
 [ext_resource type="Texture2D" uid="uid://dhmaacw7wdwpa" path="res://Assets/Vector_shit.png" id="2_82qhi"]
+[ext_resource type="AudioStream" uid="uid://c82uoh5t03jlf" path="res://Assets/Audio/trash rocket intro theme.mp3" id="4_bcyqf"]
 
 [node name="Menu" type="Control" unique_id=1657482939]
 layout_mode = 3
@@ -49,6 +50,11 @@ custom_minimum_size = Vector2(400, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Credits"
+
+[node name="TrashRocketIntroTheme" type="AudioStreamPlayer" parent="." unique_id=1332749830]
+stream = ExtResource("4_bcyqf")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
