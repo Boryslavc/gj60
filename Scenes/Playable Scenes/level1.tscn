@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c3tpaqhj1g7vh" path="res://Scenes/Conveyor Belt/TrashPort.tscn" id="6_8kbyu"]
 [ext_resource type="Texture2D" uid="uid://njlenqnob6bl" path="res://Assets/Sprites/rocketPiece1_72px.png" id="7_piqqp"]
 
-[node name="TestLevel" type="Node2D" unique_id=890376136]
+[node name="Level1" type="Node2D" unique_id=890376136]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2122639436]
 tile_map_data = PackedByteArray("AAAHAAcAAAAAAAMAAAAIAAcAAAAAAAMAAAAJAAcAAAAAAAMAAAAKAAUAAAAAAAkAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAwAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAABAAAAALAAcAAAAAAAEAAAAMAAcAAAAAAAEAAAANAAcAAAAAAAEAAAAOAAcAAAAAAAEAAAAPAAcAAAAAAAEAAAAQAAcAAAAAAAEAAAARAAcAAAAAAAEAAAASAAUAAAAAAAQAAAASAAYAAAAAAAAAAAASAAcAAAAAAAwAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAABAAAAATAAcAAAAAAAEAAAAUAAcAAAAAAAEAAAAVAAcAAAAAAAEAAAAIAAUAAAAAAAcAAAAJAAUAAAAAAAMAAAATAAUAAAAAAAEAAAAUAAUAAAAAAAoAAAA=")
@@ -59,7 +59,7 @@ script = ExtResource("3_1ucam")
 output_ports = [NodePath("../TileMapLayer/OutputPort"), NodePath("../TileMapLayer/OutputPort2")]
 trash_port_count = 2
 metal_port_count = 2
-spawn_interval = 1
+spawn_interval = 5
 item = ExtResource("5_0s57g")
 conveyor_map = NodePath("../TileMapLayer")
 trash_sprite = ExtResource("6_5m2ej")
