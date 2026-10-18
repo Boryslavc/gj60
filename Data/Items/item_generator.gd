@@ -36,11 +36,13 @@ func _ready() -> void:
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.timeout.connect(_on_timer_timeout)
 	spawn_timer.autostart = true
+	spawn_timer.one_shot = false
 	spawn_timer.set_meta("spawn_timer", true)
 	add_child(spawn_timer)
 
 
 func _on_timer_timeout() -> void:
+	print("on timeout")
 	var can_spawn_trash = trash_ports_free > 0
 	var can_spawn_metal = metal_ports_free > 0
 

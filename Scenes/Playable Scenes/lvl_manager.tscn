@@ -23,9 +23,10 @@ theme_override_font_sizes/font_size = 126
 text = "0/0"
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer" unique_id=1356966498]
-offset_left = -74.0
-offset_right = 109.0
-offset_bottom = 370.0
+offset_left = 218.0
+offset_top = -247.0
+offset_right = 401.0
+offset_bottom = 123.0
 theme_override_constants/margin_left = 111
 theme_override_constants/margin_top = 298
 
@@ -34,10 +35,10 @@ layout_mode = 2
 texture = ExtResource("2_c25s4")
 
 [node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer" unique_id=65121465]
-offset_left = -66.0
-offset_top = 8.0
-offset_right = 115.0
-offset_bottom = 484.0
+offset_left = 226.0
+offset_top = -239.0
+offset_right = 407.0
+offset_bottom = 237.0
 theme_override_constants/margin_left = 109
 theme_override_constants/margin_top = 404
 
@@ -46,20 +47,20 @@ layout_mode = 2
 texture = ExtResource("3_cnwcv")
 
 [node name="Label3" type="Label" parent="CanvasLayer" unique_id=777489057]
-offset_left = 115.0
-offset_top = 280.0
-offset_right = 572.0
-offset_bottom = 452.0
+offset_left = 407.0
+offset_top = 33.0
+offset_right = 864.0
+offset_bottom = 205.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 61
 text = "- rocket parts"
 
 [node name="Label2" type="Label" parent="CanvasLayer" unique_id=1229211592]
-offset_left = 119.0
-offset_top = 397.0
-offset_right = 438.0
-offset_bottom = 569.0
+offset_left = 411.0
+offset_top = 150.0
+offset_right = 730.0
+offset_bottom = 322.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 61

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bjt27fvrtf3rw" path="res://Scenes/Conveyor Belt/Item.tscn" id="8_ac3x6"]
 [ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="9_84dmb"]
 [ext_resource type="Texture2D" uid="uid://njlenqnob6bl" path="res://Assets/Sprites/rocketPiece1_72px.png" id="10_wyoqx"]
+[ext_resource type="PackedScene" uid="uid://c37bskjtplep0" path="res://Scenes/Playable Scenes/lvl_manager.tscn" id="11_48c54"]
 
 [node name="Level4" type="Node2D" unique_id=890376136]
 
@@ -115,6 +116,8 @@ item = ExtResource("8_ac3x6")
 conveyor_map = NodePath("../TileMapLayer")
 trash_sprite = ExtResource("9_84dmb")
 metal_sprite = ExtResource("10_wyoqx")
+
+[node name="LvlManager" parent="." unique_id=1183105098 instance=ExtResource("11_48c54")]
 
 [connection signal="part_fed" from="TileMapLayer/InputPort" to="Generator" method="_on_port_fed"]
 [connection signal="part_fed" from="TileMapLayer/InputPort2" to="Generator" method="_on_port_fed"]
