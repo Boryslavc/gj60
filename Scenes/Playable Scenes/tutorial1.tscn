@@ -1,0 +1,110 @@
+[gd_scene format=4 uid="uid://boal6lhb7i53h"]
+
+[ext_resource type="TileSet" uid="uid://djy1vavnjcnqd" path="res://Data/Conveyor/conveyor_tileset.tres" id="1_pnwn6"]
+[ext_resource type="Script" uid="uid://bx7q6tfg3e8k1" path="res://Data/Conveyor/conveyor_map.gd" id="2_oofrc"]
+[ext_resource type="PackedScene" uid="uid://b1n8diqhtqape" path="res://Scenes/Conveyor Belt/Switch.tscn" id="3_sltkt"]
+[ext_resource type="PackedScene" uid="uid://bg2btifk7ucyh" path="res://Scenes/Conveyor Belt/OutputPort.tscn" id="4_uuxcb"]
+[ext_resource type="PackedScene" uid="uid://dwpip277n60u7" path="res://Scenes/Conveyor Belt/InputPort.tscn" id="5_m1qxc"]
+[ext_resource type="PackedScene" uid="uid://c3tpaqhj1g7vh" path="res://Scenes/Conveyor Belt/TrashPort.tscn" id="6_hfjq5"]
+[ext_resource type="Script" uid="uid://dekpeahyhquco" path="res://tutorialItemGenerator.gd" id="7_pnwn6"]
+[ext_resource type="PackedScene" uid="uid://bjt27fvrtf3rw" path="res://Scenes/Conveyor Belt/Item.tscn" id="8_rl7m4"]
+[ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="9_ljq6m"]
+[ext_resource type="Texture2D" uid="uid://njlenqnob6bl" path="res://Assets/Sprites/rocketPiece1_72px.png" id="10_4vkyp"]
+
+[node name="Level1" type="Node2D" unique_id=890376136]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2122639436]
+position = Vector2(210, -26)
+scale = Vector2(1.5, 1.5)
+tile_map_data = PackedByteArray("AAAKAAcAAAAAAAIAAAACAAUAAAABABAAAAADAAUAAAAAAAEAAAAEAAUAAAAAAAEAAAAFAAUAAAAAAAEAAAAGAAUAAAAAAAEAAAAHAAUAAAAAAAEAAAAIAAUAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAMAAAAAAAQAAAAKAAQAAAAAAAAAAAAKAAYAAAAAAAIAAAAKAAgAAAAAAAsAAAALAAMAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAMAAAAAAAoAAAAMAAgAAAAAAAUAAAAKAAUAAAAAAA0AAAA=")
+tile_set = ExtResource("1_pnwn6")
+script = ExtResource("2_oofrc")
+
+[node name="Switch" parent="TileMapLayer" unique_id=2032465549 instance=ExtResource("3_sltkt")]
+position = Vector2(669.3333, 350)
+forbidden_directions = 10
+
+[node name="OutputPort" parent="TileMapLayer" unique_id=122030863 instance=ExtResource("4_uuxcb")]
+position = Vector2(207.33334, 350.6667)
+
+[node name="InputPort2" parent="TileMapLayer" unique_id=1537163729 instance=ExtResource("5_m1qxc")]
+position = Vector2(799.9999, 159.99997)
+
+[node name="TrashPort2" parent="TileMapLayer" unique_id=39865729 instance=ExtResource("6_hfjq5")]
+position = Vector2(800, 608)
+rotation = 3.1503193
+port_type = "trash"
+metal_block_time = 5.0
+trash_block_time = 0.5
+
+[node name="Generator" type="Node2D" parent="." unique_id=1822935364 node_paths=PackedStringArray("output_ports", "conveyor_map")]
+position = Vector2(242, 6)
+script = ExtResource("7_pnwn6")
+output_ports = [NodePath("../TileMapLayer/OutputPort")]
+trash_port_count = 1
+metal_port_count = 1
+spawn_interval = 5
+item = ExtResource("8_rl7m4")
+conveyor_map = NodePath("../TileMapLayer")
+trash_sprite = ExtResource("9_ljq6m")
+metal_sprite = ExtResource("10_4vkyp")
+
+[node name="PauseHereColorRect" type="ColorRect" parent="." unique_id=734863078]
+offset_left = 1081.0
+offset_top = 461.0
+offset_right = 1166.0
+offset_bottom = 546.0
+color = Color(1, 1, 1, 0)
+
+[node name="ReachedTrashColorRect" type="ColorRect" parent="." unique_id=881040573]
+offset_left = 1175.0
+offset_top = 646.0
+offset_right = 1260.0
+offset_bottom = 731.0
+color = Color(1, 1, 1, 0)
+
+[node name="TrashGoesHereLabel" type="Label" parent="." unique_id=32820316]
+offset_left = 1295.0
+offset_top = 934.0
+offset_right = 1534.0
+offset_bottom = 976.0
+theme_override_font_sizes/font_size = 30
+text = "Trash Goes Here"
+
+[node name="RocketPartsGoHere" type="Label" parent="." unique_id=1656854771]
+offset_left = 1255.0
+offset_top = 119.0
+offset_right = 1563.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 30
+text = "Rocket Parts Go Here"
+
+[node name="ItemsSpawnHere" type="Label" parent="." unique_id=109230196]
+offset_left = 317.0
+offset_top = 398.0
+offset_right = 625.0
+offset_bottom = 440.0
+theme_override_font_sizes/font_size = 30
+text = "Items Spawn Here"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1328770568]
+offset_left = 747.0
+offset_top = 225.0
+offset_right = 1100.0
+offset_bottom = 386.0
+color = Color(0.6117647, 0.30588236, 0.101960786, 1)
+
+[node name="HintLabel" type="Label" parent="ColorRect" unique_id=519074366]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "Press [1] to select the switch"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="part_fed" from="TileMapLayer/InputPort2" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/TrashPort2" to="Generator" method="_on_port_fed"]
