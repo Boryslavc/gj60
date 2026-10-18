@@ -5,6 +5,8 @@ extends Node2D
 
 ## Sent when an item was taken in. Connect it to the item generator.
 signal part_fed(port_type: String, block_time: float)
+## this incrementer goes when trash or metal is fed
+signal item_fed(item_type: int)
 
 ## Sent to the generator with part_fed.
 @export_enum("metal", "trash") var port_type: String = "metal"
@@ -40,6 +42,7 @@ func _physics_process(_delta: float) -> void:
 
 ## Removes the item, reports it and blocks the cell for the matching time.
 func _take_in(item: Item) -> void:
+	var item_type := item.type
 	var block_time := metal_block_time if item.type == Item.Type.METAL else trash_block_time
 
 	# Hand the cell over from the item to the port, so the items behind it queue up.
@@ -52,6 +55,7 @@ func _take_in(item: Item) -> void:
 	_block_timer.start(block_time)
 	# Last, because a listener may end the level and remove this port from the tree.
 	part_fed.emit(port_type, block_time)
+	item_fed.emit(item_type)
 
 func _unblock() -> void:
 	_blocked = false
