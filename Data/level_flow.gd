@@ -10,11 +10,13 @@ const LEVELS: Array[String] = [
 const MAIN_MENU := "res://Scenes/Playable Scenes/MainMenu.tscn"
 ## Loaded after the last level.
 const CREDITS := "res://Scenes/Playable Scenes/Credits.tscn"
+const ROCKET := "res://Scenes/finalRocketAnimation.tscn"
 
 signal level_started(index: int)
 
 var current_index := -1
-
+## Score of the level just finished (0-5), read by the rocket scene.
+var score := 0
 
 func start_game() -> void:
 	_load_level(0)
@@ -26,6 +28,10 @@ func next_level() -> void:
 	else:
 		to_credits()
 
+## Called by a level when it is finished. Shows the rocket, which then calls next_level().
+func complete_level(level_score: int) -> void:
+	score = level_score
+	get_tree().change_scene_to_file(ROCKET)
 
 func restart_level() -> void:
 	_load_level(current_index)

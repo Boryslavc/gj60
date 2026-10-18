@@ -67,6 +67,7 @@ trash_sprite = ExtResource("6_5m2ej")
 metal_sprite = ExtResource("7_piqqp")
 
 [node name="LvlManager" parent="." unique_id=1183105098 instance=ExtResource("11_ic8ai")]
+building_parts_required = 5
 
 [connection signal="part_fed" from="TileMapLayer/InputPort" to="Generator" method="_on_port_fed"]
 [connection signal="part_fed" from="TileMapLayer/InputPort2" to="Generator" method="_on_port_fed"]

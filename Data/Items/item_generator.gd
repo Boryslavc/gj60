@@ -28,6 +28,7 @@ func _ready() -> void:
 	
 	for x in trash_port_count + metal_port_count:
 		var timer = Timer.new()
+		timer.one_shot = true
 		node.add_child(timer)
 		timers.append(timer)
 	

@@ -19,14 +19,16 @@ signal part_fed(port_type: String, block_time: float)
 
 var _cell: Vector2i
 var _blocked := false
-
+var _block_timer := Timer.new()
 
 func _ready() -> void:
 	if _map == null:
 		set_physics_process(false)
 		return
 	_cell = _map.local_to_map(position)
-
+	_block_timer.one_shot = true
+	_block_timer.timeout.connect(_unblock)
+	add_child(_block_timer)
 
 func _physics_process(_delta: float) -> void:
 	if _blocked:
@@ -44,11 +46,14 @@ func _take_in(item: Item) -> void:
 	_map.release(_cell, item)
 	_map.try_reserve(_cell, self)
 	item.queue_free()
-	part_fed.emit(port_type, block_time)
 
 	_blocked = true
 	_show_blocked(true)
-	await get_tree().create_timer(block_time).timeout
+	_block_timer.start(block_time)
+	# Last, because a listener may end the level and remove this port from the tree.
+	part_fed.emit(port_type, block_time)
+
+func _unblock() -> void:
 	_blocked = false
 	_show_blocked(false)
 	_map.release(_cell, self)

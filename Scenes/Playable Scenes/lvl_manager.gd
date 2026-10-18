@@ -23,5 +23,5 @@ func _on_building_part_fed(name, dur):
 	part_count += 1
 	$CanvasLayer/MarginContainer/Label.text =  str(part_count)+"/"+str(building_parts_required)
 	if part_count >= building_parts_required:
-		LevelFlow.next_level()
+		LevelFlow.complete_level(5)
 		
