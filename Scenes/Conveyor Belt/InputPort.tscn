@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dwpip277n60u7"]
+
+[ext_resource type="Script" uid="uid://dhac7361504ng" path="res://Data/Conveyor/receiving_port.gd" id="1_55w37"]
+[ext_resource type="Texture2D" uid="uid://bmuuhmonnd5o6" path="res://Assets/Sprites/Tilemap64.png" id="2_ye7kt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktcey"]
+atlas = ExtResource("2_ye7kt")
+region = Rect2(128, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag64m"]
+atlas = ExtResource("2_ye7kt")
+region = Rect2(192, 832, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khhxn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktcey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag64m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="InputPort" type="Node2D" unique_id=162405446 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_55w37")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1154718570]
+sprite_frames = SubResource("SpriteFrames_khhxn")

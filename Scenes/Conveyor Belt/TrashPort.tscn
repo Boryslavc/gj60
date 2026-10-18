@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c3tpaqhj1g7vh"]
+
+[ext_resource type="Script" uid="uid://dhac7361504ng" path="res://Data/Conveyor/receiving_port.gd" id="1_hah8i"]
+[ext_resource type="Texture2D" uid="uid://bmuuhmonnd5o6" path="res://Assets/Sprites/Tilemap64.png" id="2_ktyo3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iht0r"]
+atlas = ExtResource("2_ktyo3")
+region = Rect2(128, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_707lm"]
+atlas = ExtResource("2_ktyo3")
+region = Rect2(192, 832, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1fef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iht0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_707lm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="TrashPort" type="Node2D" unique_id=122030863 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_hah8i")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2105499727]
+modulate = Color(0.25490198, 0.8235294, 0, 1)
+sprite_frames = SubResource("SpriteFrames_s1fef")
