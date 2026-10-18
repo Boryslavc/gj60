@@ -1,0 +1,79 @@
+[gd_scene format=4 uid="uid://bjiqika5c5e4n"]
+
+[ext_resource type="TileSet" uid="uid://djy1vavnjcnqd" path="res://Data/Conveyor/conveyor_tileset.tres" id="1_it55s"]
+[ext_resource type="Script" uid="uid://bx7q6tfg3e8k1" path="res://Data/Conveyor/conveyor_map.gd" id="2_3spxy"]
+[ext_resource type="PackedScene" uid="uid://b1n8diqhtqape" path="res://Scenes/Conveyor Belt/Switch.tscn" id="3_cw620"]
+[ext_resource type="PackedScene" uid="uid://bg2btifk7ucyh" path="res://Scenes/Conveyor Belt/OutputPort.tscn" id="4_quypw"]
+[ext_resource type="PackedScene" uid="uid://dwpip277n60u7" path="res://Scenes/Conveyor Belt/InputPort.tscn" id="5_xkl5w"]
+[ext_resource type="PackedScene" uid="uid://c3tpaqhj1g7vh" path="res://Scenes/Conveyor Belt/TrashPort.tscn" id="6_tx08i"]
+[ext_resource type="Script" uid="uid://bg2tvbxvf4w8j" path="res://Data/Items/item_generator.gd" id="7_x5fat"]
+[ext_resource type="PackedScene" uid="uid://bjt27fvrtf3rw" path="res://Scenes/Conveyor Belt/Item.tscn" id="8_w46gl"]
+[ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="9_88uqd"]
+[ext_resource type="Texture2D" uid="uid://njlenqnob6bl" path="res://Assets/Sprites/rocketPiece1_72px.png" id="10_iu18q"]
+
+[node name="Level2" type="Node2D" unique_id=890376136]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2122639436]
+tile_map_data = PackedByteArray("AAAHAAcAAAAAAAMAAAAIAAcAAAAAAAMAAAAJAAcAAAAAAAMAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAwAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAABAAAAALAAcAAAAAAAEAAAAMAAcAAAAAAAEAAAANAAcAAAAAAAEAAAAOAAcAAAABAAwAAAAPAAcAAAAAAAEAAAAQAAcAAAAAAAEAAAARAAcAAAAAAAEAAAASAAYAAAAAAAAAAAASAAcAAAAAAAwAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAABAAAAATAAcAAAAAAAEAAAAUAAcAAAAAAAEAAAAVAAcAAAAAAAEAAAAOAA8AAAAAABAAAAAOAA4AAAAAAAAAAAAOAA0AAAAAAAAAAAAOAAwAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAAKAAUAAAAAAAAAAAASAAUAAAAAAAAAAAA=")
+tile_set = ExtResource("1_it55s")
+script = ExtResource("2_3spxy")
+
+[node name="Switch" parent="TileMapLayer" unique_id=2032465549 instance=ExtResource("3_cw620")]
+position = Vector2(672, 480)
+forbidden_directions = 4
+
+[node name="Switch2" parent="TileMapLayer" unique_id=514968540 instance=ExtResource("3_cw620")]
+position = Vector2(928, 480)
+key = 2
+forbidden_directions = 5
+
+[node name="Switch3" parent="TileMapLayer" unique_id=1674581409 instance=ExtResource("3_cw620")]
+position = Vector2(1184, 480)
+key = 3
+forbidden_directions = 4
+
+[node name="OutputPort" parent="TileMapLayer" unique_id=122030863 instance=ExtResource("4_quypw")]
+position = Vector2(672, 928)
+
+[node name="OutputPort2" parent="TileMapLayer" unique_id=166973934 instance=ExtResource("4_quypw")]
+position = Vector2(928, 928)
+
+[node name="OutputPort3" parent="TileMapLayer" unique_id=459733910 instance=ExtResource("4_quypw")]
+position = Vector2(1184, 928)
+
+[node name="InputPort" parent="TileMapLayer" unique_id=162405446 instance=ExtResource("5_xkl5w")]
+position = Vector2(672, 288)
+
+[node name="InputPort2" parent="TileMapLayer" unique_id=1537163729 instance=ExtResource("5_xkl5w")]
+position = Vector2(1184, 288)
+
+[node name="TrashPort" parent="TileMapLayer" unique_id=542074340 instance=ExtResource("6_tx08i")]
+position = Vector2(416, 480)
+rotation = -1.5707964
+port_type = "trash"
+metal_block_time = 5.0
+trash_block_time = 0.5
+
+[node name="TrashPort2" parent="TileMapLayer" unique_id=39865729 instance=ExtResource("6_tx08i")]
+position = Vector2(1440, 480)
+rotation = 1.5707964
+port_type = "trash"
+metal_block_time = 5.0
+trash_block_time = 0.5
+
+[node name="Generator" type="Node2D" parent="." unique_id=1822935364 node_paths=PackedStringArray("output_ports", "conveyor_map")]
+position = Vector2(32, 32)
+script = ExtResource("7_x5fat")
+output_ports = [NodePath("../TileMapLayer/OutputPort"), NodePath("../TileMapLayer/OutputPort2"), NodePath("../TileMapLayer/OutputPort3")]
+trash_port_count = 2
+metal_port_count = 2
+spawn_interval = 5
+item = ExtResource("8_w46gl")
+conveyor_map = NodePath("../TileMapLayer")
+trash_sprite = ExtResource("9_88uqd")
+metal_sprite = ExtResource("10_iu18q")
+
+[connection signal="part_fed" from="TileMapLayer/InputPort" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/InputPort2" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/TrashPort" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/TrashPort2" to="Generator" method="_on_port_fed"]

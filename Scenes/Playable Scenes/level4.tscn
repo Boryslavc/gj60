@@ -1,0 +1,125 @@
+[gd_scene format=4 uid="uid://2kvja2q3nsco"]
+
+[ext_resource type="TileSet" uid="uid://djy1vavnjcnqd" path="res://Data/Conveyor/conveyor_tileset.tres" id="1_2pmja"]
+[ext_resource type="Script" uid="uid://bx7q6tfg3e8k1" path="res://Data/Conveyor/conveyor_map.gd" id="2_48c54"]
+[ext_resource type="PackedScene" uid="uid://b1n8diqhtqape" path="res://Scenes/Conveyor Belt/Switch.tscn" id="3_w8oyr"]
+[ext_resource type="PackedScene" uid="uid://bg2btifk7ucyh" path="res://Scenes/Conveyor Belt/OutputPort.tscn" id="4_hem0x"]
+[ext_resource type="PackedScene" uid="uid://dwpip277n60u7" path="res://Scenes/Conveyor Belt/InputPort.tscn" id="5_kxcuh"]
+[ext_resource type="PackedScene" uid="uid://c3tpaqhj1g7vh" path="res://Scenes/Conveyor Belt/TrashPort.tscn" id="6_en2mm"]
+[ext_resource type="Script" uid="uid://bg2tvbxvf4w8j" path="res://Data/Items/item_generator.gd" id="7_mgmb8"]
+[ext_resource type="PackedScene" uid="uid://bjt27fvrtf3rw" path="res://Scenes/Conveyor Belt/Item.tscn" id="8_ac3x6"]
+[ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="9_84dmb"]
+[ext_resource type="Texture2D" uid="uid://njlenqnob6bl" path="res://Assets/Sprites/rocketPiece1_72px.png" id="10_wyoqx"]
+
+[node name="Level4" type="Node2D" unique_id=890376136]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2122639436]
+tile_map_data = PackedByteArray("AAACAAsAAAABABAAAAADAAsAAAAAAAEAAAAEAAYAAAAAAAMAAAAEAAoAAAAAAAcAAAAEAAsAAAAAAAEAAAAFAAYAAAAAAAwAAAAFAAkAAAAAAAcAAAAFAAoAAAAAAAkAAAAFAAsAAAAAAAwAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAABAAAAAGAAYAAAAAAAEAAAAGAAsAAAAAAAoAAAAHAAYAAAAAAAEAAAAHAAsAAAABAAwAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAABAAAAAIAAYAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAwAAAAAAAQAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAABAAAAAKAAYAAAAAAAUAAAAKAAcAAAAAAAIAAAAKAAgAAAAAAAQAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAwAAAAAAAEAAAALAAwAAAAAAAEAAAALAA0AAAAAAAQAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAcAAAAMAA0AAAAAAAEAAAANAAkAAAAAAAQAAAANAAoAAAAAAAwAAAANAA0AAAAAAAEAAAAOAAoAAAAAAAEAAAAOAA0AAAAAAAEAAAAPAAoAAAAAAAEAAAAPAA0AAAAAAAEAAAAQAAoAAAAAAAEAAAAQAA0AAAAAAAEAAAARAA0AAAAAAAEAAAASAAcAAAAAAAQAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAwAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAwAAAATAAcAAAAAAAEAAAATAA0AAAAAAAEAAAAUAAUAAAAAAAQAAAAUAAcAAAAAAAwAAAAUAAwAAAAAAAcAAAAVAAcAAAAAAAEAAAAWAAwAAAAAAAMAAAAXAAwAAAAAAAMAAAAYAAwAAAAAAAMAAAAFAAUAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAkAAAAAAA0AAAAGAAoAAAAAAAAAAAAHAAkAAAAAAAUAAAAHAAoAAAAAAAIAAAAJAAYAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAoAAAALAAgAAAAAAAEAAAALAA4AAAAAAAAAAAALAA8AAAAAABAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAoAAAAMAAwAAAAAAAEAAAANAAsAAAAAAAAAAAANAAwAAAAAAAoAAAAOAAkAAAAAAAEAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAoAAAARAAoAAAAAAAEAAAAUAAYAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAA0AAAAAAAEAAAAVAAUAAAAAAAEAAAAVAA0AAAAAAAoAAAAWAAUAAAAAAAoAAAAWAAcAAAAAAAEAAAAXAAcAAAAAAAEAAAAZAAwAAAAAAAMAAAAaAAwAAAAAABEAAAAVAAwAAAAAAAMAAAA=")
+tile_set = ExtResource("1_2pmja")
+script = ExtResource("2_48c54")
+
+[node name="Switch" parent="TileMapLayer" unique_id=2032465549 instance=ExtResource("3_w8oyr")]
+position = Vector2(352, 736)
+forbidden_directions = 12
+
+[node name="Switch2" parent="TileMapLayer" unique_id=514968540 instance=ExtResource("3_w8oyr")]
+position = Vector2(480, 736)
+key = 2
+forbidden_directions = 12
+
+[node name="Switch3" parent="TileMapLayer" unique_id=1907637958 instance=ExtResource("3_w8oyr")]
+position = Vector2(1184, 864)
+key = 3
+forbidden_directions = 12
+
+[node name="Switch4" parent="TileMapLayer" unique_id=863506563 instance=ExtResource("3_w8oyr")]
+position = Vector2(416, 608)
+key = 4
+forbidden_directions = 3
+
+[node name="Switch5" parent="TileMapLayer" unique_id=1911192397 instance=ExtResource("3_w8oyr")]
+position = Vector2(864, 672)
+key = 5
+forbidden_directions = 1
+
+[node name="Switch6" parent="TileMapLayer" unique_id=59423232 instance=ExtResource("3_w8oyr")]
+position = Vector2(1184, 672)
+key = 6
+
+[node name="Switch7" parent="TileMapLayer" unique_id=10523065 instance=ExtResource("3_w8oyr")]
+position = Vector2(352, 416)
+key = 7
+
+[node name="Switch8" parent="TileMapLayer" unique_id=583023038 instance=ExtResource("3_w8oyr")]
+position = Vector2(1312, 480)
+key = 8
+
+[node name="OutputPort" parent="TileMapLayer" unique_id=122030863 instance=ExtResource("4_hem0x")]
+position = Vector2(352, 928)
+
+[node name="OutputPort2" parent="TileMapLayer" unique_id=166973934 instance=ExtResource("4_hem0x")]
+position = Vector2(480, 928)
+
+[node name="OutputPort3" parent="TileMapLayer" unique_id=986340047 instance=ExtResource("4_hem0x")]
+position = Vector2(608, 928)
+
+[node name="OutputPort4" parent="TileMapLayer" unique_id=407193713 instance=ExtResource("4_hem0x")]
+position = Vector2(736, 928)
+
+[node name="OutputPort5" parent="TileMapLayer" unique_id=1893934566 instance=ExtResource("4_hem0x")]
+position = Vector2(224, 736)
+
+[node name="OutputPort6" parent="TileMapLayer" unique_id=597808033 instance=ExtResource("4_hem0x")]
+position = Vector2(1632, 800)
+
+[node name="InputPort" parent="TileMapLayer" unique_id=162405446 instance=ExtResource("5_kxcuh")]
+position = Vector2(352, 288)
+
+[node name="InputPort2" parent="TileMapLayer" unique_id=1537163729 instance=ExtResource("5_kxcuh")]
+position = Vector2(800, 352)
+
+[node name="InputPort3" parent="TileMapLayer" unique_id=1105875473 instance=ExtResource("5_kxcuh")]
+position = Vector2(992, 480)
+
+[node name="InputPort4" parent="TileMapLayer" unique_id=1074746094 instance=ExtResource("5_kxcuh")]
+position = Vector2(1440, 288)
+
+[node name="TrashPort" parent="TileMapLayer" unique_id=542074340 instance=ExtResource("6_en2mm")]
+position = Vector2(288, 608)
+port_type = "trash"
+metal_block_time = 5.0
+trash_block_time = 0.5
+
+[node name="TrashPort2" parent="TileMapLayer" unique_id=39865729 instance=ExtResource("6_en2mm")]
+position = Vector2(1568, 480)
+rotation = 1.5707964
+port_type = "trash"
+metal_block_time = 5.0
+trash_block_time = 0.5
+
+[node name="TrashPort3" parent="TileMapLayer" unique_id=1637388174 instance=ExtResource("6_en2mm")]
+position = Vector2(224, 416)
+rotation = -1.5707964
+port_type = "trash"
+metal_block_time = 5.0
+trash_block_time = 0.5
+
+[node name="Generator" type="Node2D" parent="." unique_id=1822935364 node_paths=PackedStringArray("output_ports", "conveyor_map")]
+position = Vector2(32, 32)
+script = ExtResource("7_mgmb8")
+output_ports = [NodePath("../TileMapLayer/OutputPort"), NodePath("../TileMapLayer/OutputPort2"), NodePath("../TileMapLayer/OutputPort3"), NodePath("../TileMapLayer/OutputPort4"), NodePath("../TileMapLayer/OutputPort5"), NodePath("../TileMapLayer/OutputPort6")]
+trash_port_count = 3
+metal_port_count = 4
+spawn_interval = 5
+item = ExtResource("8_ac3x6")
+conveyor_map = NodePath("../TileMapLayer")
+trash_sprite = ExtResource("9_84dmb")
+metal_sprite = ExtResource("10_wyoqx")
+
+[connection signal="part_fed" from="TileMapLayer/InputPort" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/InputPort2" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/InputPort3" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/InputPort4" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/TrashPort" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/TrashPort2" to="Generator" method="_on_port_fed"]
+[connection signal="part_fed" from="TileMapLayer/TrashPort3" to="Generator" method="_on_port_fed"]
