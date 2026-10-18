@@ -1,3 +1,55 @@
 [gd_scene format=3 uid="uid://baea1kyy7a3w7"]
 
-[node name="Credits" type="Node2D" unique_id=1041220133]
+[ext_resource type="Script" uid="uid://modmstlefwbg" path="res://Data/credits.gd" id="1_1gjp5"]
+[ext_resource type="Texture2D" uid="uid://6wjj0vtyiods" path="res://Assets/Untitled228_20261018115931.png" id="2_q4qny"]
+
+[node name="Credits" type="Control" unique_id=1712326295]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1gjp5")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1416454421]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 608.0
+offset_right = 1408.0
+offset_bottom = 1088.0
+texture = ExtResource("2_q4qny")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=383247750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=166751921]
+layout_mode = 2
+offset_transform_enabled = true
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1021535347]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="Names" type="Label" parent="CenterContainer/VBoxContainer" unique_id=241923818]
+layout_mode = 2
+text = "Names of the People 
+working on this Project"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=470989901]
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_font_sizes/font_size = 20
+text = "Back to Main Menu
+"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

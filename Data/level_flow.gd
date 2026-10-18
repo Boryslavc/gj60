@@ -4,6 +4,8 @@ extends Node
 const LEVELS: Array[String] = [
 	"res://Scenes/Playable Scenes/level1.tscn",
 	"res://Scenes/Playable Scenes/level2.tscn",
+	"res://Scenes/Playable Scenes/level3.tscn",
+	"res://Scenes/Playable Scenes/level4.tscn",
 ]
 const MAIN_MENU := "res://Scenes/Playable Scenes/MainMenu.tscn"
 ## Loaded after the last level.
@@ -22,8 +24,7 @@ func next_level() -> void:
 	if current_index + 1 < LEVELS.size():
 		_load_level(current_index + 1)
 	else:
-		current_index = -1
-		get_tree().change_scene_to_file(CREDITS)
+		to_credits()
 
 
 func restart_level() -> void:
@@ -41,3 +42,7 @@ func _load_level(index: int) -> void:
 	current_index = index
 	get_tree().change_scene_to_file(LEVELS[index])
 	level_started.emit(index)
+
+func to_credits() -> void:
+	current_index = -1
+	get_tree().change_scene_to_file(CREDITS)
