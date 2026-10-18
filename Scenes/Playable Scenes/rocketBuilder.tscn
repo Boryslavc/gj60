@@ -1,79 +1,195 @@
 [gd_scene format=3 uid="uid://dsige7vuw3ta3"]
 
-[ext_resource type="Texture2D" uid="uid://4jfj3kc55yl6" path="res://Assets/Sprites/rocketPiece1.png" id="1_a87kr"]
-[ext_resource type="Texture2D" uid="uid://ypef18gyk12s" path="res://Assets/Sprites/rocketPiece5.png" id="2_s1rlv"]
-[ext_resource type="Texture2D" uid="uid://duvjeykdvx1fk" path="res://Assets/Sprites/rocketPiece2.png" id="3_4lfbd"]
-[ext_resource type="Texture2D" uid="uid://dx58crmxsvqfa" path="res://Assets/Sprites/rocketPiece3.png" id="4_7h4eq"]
-[ext_resource type="Texture2D" uid="uid://dg5brcdhakrjw" path="res://Assets/Sprites/rocketPiece4.png" id="5_vbgqa"]
-[ext_resource type="Texture2D" uid="uid://dqftrgwcn1weq" path="res://Assets/Sprites/battery.png" id="6_a87kr"]
-[ext_resource type="Texture2D" uid="uid://c4rdn4nb6yvv6" path="res://Assets/Sprites/wrench.png" id="7_57xxu"]
-[ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="8_a87kr"]
-[ext_resource type="Texture2D" uid="uid://bvwu5ncrxa2f" path="res://Assets/Sprites/pizza.png" id="9_a87kr"]
+[ext_resource type="Script" uid="uid://c2usw05hmehe" path="res://Scenes/rocket_builder.gd" id="1_3qxmg"]
+[ext_resource type="Texture2D" uid="uid://4jfj3kc55yl6" path="res://Assets/Sprites/1.png" id="1_gdas6"]
+[ext_resource type="Texture2D" uid="uid://c6y4we44q01t0" path="res://Assets/fire_animation/fire_1.png" id="1_okd4h"]
+[ext_resource type="Texture2D" uid="uid://b5of76hpdmt77" path="res://Assets/fire_animation/fire_2.png" id="2_7ivsu"]
+[ext_resource type="Texture2D" uid="uid://ypef18gyk12s" path="res://Assets/Sprites/1.png" id="2_yewrn"]
+[ext_resource type="Texture2D" uid="uid://d4dfbs0tdhhng" path="res://Assets/fire_animation/fire_3.png" id="3_3qxmg"]
+[ext_resource type="Texture2D" uid="uid://duvjeykdvx1fk" path="res://Assets/Sprites/1.png" id="3_7la4g"]
+[ext_resource type="Texture2D" uid="uid://b5d7atpbe6225" path="res://Assets/fire_animation/fire_4.png" id="4_1ojab"]
+[ext_resource type="Texture2D" uid="uid://dx58crmxsvqfa" path="res://Assets/Sprites/1.png" id="4_lfxc7"]
+[ext_resource type="Texture2D" uid="uid://dg5brcdhakrjw" path="res://Assets/Sprites/1.png" id="5_7ifls"]
+[ext_resource type="Texture2D" uid="uid://dif1g8swcfqxp" path="res://Assets/fire_animation/fire_5.png" id="5_t6eot"]
+[ext_resource type="Texture2D" uid="uid://dqftrgwcn1weq" path="res://Assets/Sprites/1.png" id="6_okd4h"]
+[ext_resource type="Texture2D" uid="uid://c4rdn4nb6yvv6" path="res://Assets/Sprites/1.png" id="7_7ivsu"]
+[ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/1.png" id="8_3qxmg"]
+[ext_resource type="Texture2D" uid="uid://bvwu5ncrxa2f" path="res://Assets/Sprites/1.png" id="9_1ojab"]
+[ext_resource type="Texture2D" uid="uid://dpdmmsf7jrate" path="res://Assets/smoke_particle.png" id="15_7ivsu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxm3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_okd4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7ivsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3qxmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1ojab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t6eot")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_xxm3j"]
+_data = [Vector2(0.030732855, 0.03676474), 0.0, 0.0, 0, 0, Vector2(0.43735224, 0.19485301), 0.0, 0.0, 0, 0, Vector2(0.8463357, 0.48529416), 0.0, 0.0, 0, 0, Vector2(1, 0.86397064), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="RocketBuilder" type="Node2D" unique_id=431214620]
+script = ExtResource("1_3qxmg")
 
-[node name="RocketPiece1" type="TextureRect" parent="." unique_id=21183191]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="FireAnimation3" type="AnimatedSprite2D" parent="." unique_id=582093729]
+position = Vector2(292, 576)
+rotation = -3.1415925
 scale = Vector2(10, 10)
-texture = ExtResource("1_a87kr")
+sprite_frames = SubResource("SpriteFrames_xxm3j")
+autoplay = "default"
 
-[node name="RocketPiece5" type="TextureRect" parent="." unique_id=1909862139]
-visible = false
-offset_right = 128.0
-offset_bottom = 128.0
+[node name="FireAnimation2" type="AnimatedSprite2D" parent="." unique_id=388575649]
+position = Vector2(1.0000648, 606)
+rotation = -3.1415925
 scale = Vector2(10, 10)
-texture = ExtResource("2_s1rlv")
+sprite_frames = SubResource("SpriteFrames_xxm3j")
+autoplay = "default"
 
-[node name="RocketPiece2" type="TextureRect" parent="." unique_id=1128795211]
-offset_right = 128.0
-offset_bottom = 128.0
+[node name="FireAnimation1" type="AnimatedSprite2D" parent="." unique_id=1579798202]
+position = Vector2(-284.9999, 570)
+rotation = -3.1415925
 scale = Vector2(10, 10)
-texture = ExtResource("3_4lfbd")
-
-[node name="RocketPiece3" type="TextureRect" parent="." unique_id=765035084]
-visible = false
-offset_right = 128.0
-offset_bottom = 128.0
-scale = Vector2(10, 10)
-texture = ExtResource("4_7h4eq")
-
-[node name="RocketPiece4" type="TextureRect" parent="." unique_id=1760208444]
-offset_right = 128.0
-offset_bottom = 128.0
-scale = Vector2(10, 10)
-texture = ExtResource("5_vbgqa")
-
-[node name="TrashPiece5" type="TextureRect" parent="." unique_id=1471407314]
-offset_left = 646.0
-offset_top = 248.0
-offset_right = 718.0
-offset_bottom = 320.0
-scale = Vector2(9, 9)
-texture = ExtResource("6_a87kr")
+sprite_frames = SubResource("SpriteFrames_xxm3j")
+autoplay = "default"
 
 [node name="TrashPiece2" type="TextureRect" parent="." unique_id=1684396072]
 visible = false
-offset_left = 1.0001221
-offset_top = 238.99998
-offset_right = 129.00012
-offset_bottom = 367.0
+offset_left = -597.99994
+offset_top = -501.99994
+offset_right = -469.99994
+offset_bottom = -373.99994
 scale = Vector2(5, 5)
-texture = ExtResource("7_57xxu")
+texture = ExtResource("7_7ivsu")
+
+[node name="TrashPiece5" type="TextureRect" parent="." unique_id=1471407314]
+visible = false
+offset_left = 9.999939
+offset_top = -504.00006
+offset_right = 81.99994
+offset_bottom = -432.00006
+scale = Vector2(9, 9)
+texture = ExtResource("6_okd4h")
+
+[node name="RocketPiece1" type="TextureRect" parent="." unique_id=21183191]
+offset_left = -636.0
+offset_top = -752.0
+offset_right = -508.0
+offset_bottom = -624.0
+scale = Vector2(10, 10)
+texture = ExtResource("1_gdas6")
+
+[node name="RocketPiece5" type="TextureRect" parent="." unique_id=1909862139]
+offset_left = -606.99994
+offset_top = -740.99994
+offset_right = -478.99994
+offset_bottom = -612.99994
+scale = Vector2(10, 10)
+texture = ExtResource("2_yewrn")
+
+[node name="RocketPiece2" type="TextureRect" parent="." unique_id=1128795211]
+offset_left = -636.0
+offset_top = -752.0
+offset_right = -508.0
+offset_bottom = -624.0
+scale = Vector2(10, 10)
+texture = ExtResource("3_7la4g")
+
+[node name="RocketPiece3" type="TextureRect" parent="." unique_id=765035084]
+offset_left = -636.0
+offset_top = -752.0
+offset_right = -508.0
+offset_bottom = -624.0
+scale = Vector2(10, 10)
+texture = ExtResource("4_lfxc7")
+
+[node name="RocketPiece4" type="TextureRect" parent="." unique_id=1760208444]
+offset_left = -636.0
+offset_top = -752.0
+offset_right = -508.0
+offset_bottom = -624.0
+scale = Vector2(10, 10)
+texture = ExtResource("5_7ifls")
 
 [node name="TrashPiece4" type="TextureRect" parent="." unique_id=344052880]
 visible = false
-offset_left = 520.00006
-offset_top = 499.00006
-offset_right = 592.00006
-offset_bottom = 571.00006
+offset_left = -125.99988
+offset_top = -264.0
+offset_right = -53.999878
+offset_bottom = -192.0
 scale = Vector2(10, 10)
-texture = ExtResource("8_a87kr")
+texture = ExtResource("8_3qxmg")
 
 [node name="TrashPiece3" type="TextureRect" parent="." unique_id=889042374]
-offset_left = 69.00049
-offset_top = 521.0
-offset_right = 141.00049
-offset_bottom = 593.0
+visible = false
+offset_left = -576.99994
+offset_top = -244.99988
+offset_right = -504.99994
+offset_bottom = -172.99988
 scale = Vector2(10, 10)
-texture = ExtResource("9_a87kr")
+texture = ExtResource("9_1ojab")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=368488133]
+position = Vector2(14, 428)
+amount = 5
+texture = ExtResource("15_7ivsu")
+explosiveness = 0.34
+randomness = 0.78
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+angle_min = -291.9
+angle_max = 518.9
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_xxm3j")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="." unique_id=1654980172]
+position = Vector2(286, 416)
+amount = 5
+texture = ExtResource("15_7ivsu")
+explosiveness = 0.34
+randomness = 0.78
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+angle_min = -291.9
+angle_max = 518.9
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_xxm3j")
+
+[node name="CPUParticles2D1" type="CPUParticles2D" parent="." unique_id=394333856]
+position = Vector2(-289, 411)
+amount = 5
+texture = ExtResource("15_7ivsu")
+explosiveness = 0.34
+randomness = 0.78
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+angle_min = -291.9
+angle_max = 518.9
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_xxm3j")
