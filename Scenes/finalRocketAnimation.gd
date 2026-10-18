@@ -19,6 +19,8 @@ var initial_rocket_rotation: float
 
 
 func _ready() -> void:
+	score = LevelFlow.score
+	initial_rocket_position = rocket_builder.global_position
 	initial_rocket_position = rocket_builder.global_position
 	initial_rocket_rotation = rocket_builder.rotation
 	
@@ -125,7 +127,9 @@ func launch_perfect(final_score: int) -> void:
 
 func display_label(final_score: int) -> void:
 	color_rect.visible = true
-	label.text = "Game Over!\nScore: %d/5" % final_score
-	
+	label.text = "Score: %d/5" % final_score
+
 	var tw = create_tween()
 	tw.tween_property(color_rect, "modulate:a", 1.0, 0.4)
+	tw.tween_interval(2.0)
+	tw.tween_callback(LevelFlow.next_level)
