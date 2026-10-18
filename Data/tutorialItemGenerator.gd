@@ -70,12 +70,6 @@ func _process(delta: float) -> void:
 	for item_node in active_items:
 		if not is_instance_valid(item_node):
 			continue
-		print("active_items: ", active_items.size())
-		print("second:", spawned_second_item,
-		" w_last:", w_is_last_pressed,
-		" s_last:", s_is_last_pressed,
-		" in_rect:", pause_rect.has_point(item_node.global_position),
-		" speed:", item_node.speed)
 		# first item pause
 		if (pause_rect.has_point(item_node.global_position)
 			and not (pressed_one and s_is_last_pressed)

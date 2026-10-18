@@ -1,8 +1,7 @@
 extends Node2D
 
 """DISPLAY AN ANIMATION based on how the player did out of 5
-the instantiating scene should set score"""
-var score: int = 5 # out of 5
+score is read from the LevelFlow autoload."""
 
 @onready var rocket_builder: Node2D = $RocketBuilder
 @onready var center_star_1: TextureRect = $CenterStar1
@@ -19,7 +18,6 @@ var initial_rocket_rotation: float
 
 
 func _ready() -> void:
-	score = LevelFlow.score
 	initial_rocket_position = rocket_builder.global_position
 	initial_rocket_position = rocket_builder.global_position
 	initial_rocket_rotation = rocket_builder.rotation
@@ -27,7 +25,7 @@ func _ready() -> void:
 	color_rect.modulate.a = 0.0
 	color_rect.visible = false
 	
-	start_launch(score)
+	start_launch(LevelFlow.score)
 
 
 func start_launch(current_score: int, go_left: bool = true) -> void:

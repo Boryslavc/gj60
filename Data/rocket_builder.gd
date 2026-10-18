@@ -5,7 +5,7 @@ extends Node2D
 Length of rocket pieces should equal score
 we need some sort of shared score manager between rocket builder and rocket animation scenes"""
 
-var rocket_pieces = [1,2,3,4,5]
+var rocket_pieces: Array[int] = []
 var score:int = 1 # out of 5
 
 @onready var fire_animation_3: AnimatedSprite2D = $FireAnimation3
@@ -27,7 +27,13 @@ var score:int = 1 # out of 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	rocket_piece_1.visible = true
+	print(LevelFlow.score, "level score")
+	score = LevelFlow.score
+	rocket_pieces.clear()
+	for piece_number in range(1, score + 1):
+		rocket_pieces.append(piece_number)
+
+	rocket_piece_1.visible = 1 in rocket_pieces
 	
 	rocket_piece_2.visible = 2 in rocket_pieces
 	trash_piece_2.visible = not (2 in rocket_pieces)
