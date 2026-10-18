@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsige7vuw3ta3"]
 
-[ext_resource type="Script" uid="uid://c2usw05hmehe" path="res://Scenes/rocket_builder.gd" id="1_3qxmg"]
+[ext_resource type="Script" uid="uid://c2usw05hmehe" path="res://Data/rocket_builder.gd" id="1_3qxmg"]
 [ext_resource type="Texture2D" uid="uid://4jfj3kc55yl6" path="res://Assets/Sprites/rocketPiece1.png" id="1_gdas6"]
 [ext_resource type="Texture2D" uid="uid://c6y4we44q01t0" path="res://Assets/fire_animation/fire_1.png" id="1_okd4h"]
 [ext_resource type="Texture2D" uid="uid://b5of76hpdmt77" path="res://Assets/fire_animation/fire_2.png" id="2_7ivsu"]

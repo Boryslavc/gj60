@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://usfvhd2wsgk1"]
 
 [ext_resource type="Script" uid="uid://laq4fqv6rrx3" path="res://Data/main_menu.gd" id="1_kvfcw"]
+[ext_resource type="Theme" uid="uid://pq4bga7u0c3f" path="res://Assets/base_theme.tres" id="1_kxa36"]
 [ext_resource type="Texture2D" uid="uid://dhmaacw7wdwpa" path="res://Assets/Vector_shit.png" id="2_82qhi"]
 
 [node name="Menu" type="Control" unique_id=1657482939]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kxa36")
 script = ExtResource("1_kvfcw")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1367772025]

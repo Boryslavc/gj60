@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://be5kj806p4lxj"]
+
+[ext_resource type="Script" uid="uid://cwlfi68mae3gs" path="res://Data/Items/item.gd" id="1_8imum"]
+[ext_resource type="Texture2D" uid="uid://635kmvphp1v3" path="res://Assets/Sprites/can.png" id="2_8imum"]
+
+[node name="Item" type="Node2D" unique_id=1454775700]
+script = ExtResource("1_8imum")
+speed = 64.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1944726718]
+texture = ExtResource("2_8imum")
