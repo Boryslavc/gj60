@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://635kmvphp1v3" path="res://Assets/Sprites/can.png" id="3_16wfi"]
 [ext_resource type="Texture2D" uid="uid://bvwu5ncrxa2f" path="res://Assets/Sprites/pizza.png" id="4_i13gp"]
 [ext_resource type="PackedScene" uid="uid://dsige7vuw3ta3" path="res://Scenes/Playable Scenes/rocketBuilder.tscn" id="5_wgn2r"]
+[ext_resource type="AudioStream" uid="uid://bqfs1r3sf3v12" path="res://Assets/Audio/rocket failure stab.mp3" id="6_qdxca"]
 
 [node name="finalRocketAnimation" type="Node2D" unique_id=532335740]
 script = ExtResource("1_6svd6")
@@ -87,3 +88,8 @@ text = "Game Over!
 Score: 0/5"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1197433619]
+stream = ExtResource("6_qdxca")
+autoplay = true
+bus = &"Music"

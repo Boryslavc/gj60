@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://modmstlefwbg" path="res://Data/credits.gd" id="1_1gjp5"]
 [ext_resource type="Theme" uid="uid://pq4bga7u0c3f" path="res://Assets/base_theme.tres" id="1_8rmya"]
 [ext_resource type="Texture2D" uid="uid://6wjj0vtyiods" path="res://Assets/Untitled228_20261018115931.png" id="2_q4qny"]
+[ext_resource type="Texture2D" uid="uid://635kmvphp1v3" path="res://Assets/Sprites/can.png" id="4_1mnpd"]
+[ext_resource type="Texture2D" uid="uid://bvwu5ncrxa2f" path="res://Assets/Sprites/pizza.png" id="5_t8ne5"]
+[ext_resource type="Texture2D" uid="uid://1t6tmjr1rljk" path="res://Assets/Sprites/rat.png" id="6_8467h"]
+[ext_resource type="AudioStream" uid="uid://c82uoh5t03jlf" path="res://Assets/Audio/trash rocket intro theme.mp3" id="7_t8ne5"]
 
 [node name="Credits" type="Control" unique_id=1712326295]
 layout_mode = 3
@@ -39,10 +43,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = -96.0
-offset_right = 32.0
-offset_bottom = -96.0
+offset_top = -209.0
+offset_bottom = -209.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -53,12 +55,22 @@ offset_transform_enabled = true
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1021535347]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Credits"
+text = "Credits
+"
+horizontal_alignment = 1
 
 [node name="Names" type="Label" parent="CenterContainer/VBoxContainer" unique_id=241923818]
 layout_mode = 2
-text = "Names of the People 
-working on this Project"
+text = "Names of the People working on this Project
+
+Chrizepam - https://itch.io/profile/moderategamer
+Marc Heizmann - https://itch.io/profile/mamamarc
+ka-pow - https://itch.io/profile/kapowgames
+_just_a_sailor_ - https://black-pearl-studios.itch.io/
+garnold
+
+
+"
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=470989901]
@@ -67,5 +79,24 @@ offset_transform_enabled = true
 theme_override_font_sizes/font_size = 20
 text = "Back to Main Menu
 "
+
+[node name="Can" type="Sprite2D" parent="." unique_id=1562381029]
+position = Vector2(104, 975)
+texture = ExtResource("4_1mnpd")
+
+[node name="Pizza" type="Sprite2D" parent="." unique_id=2055029230]
+position = Vector2(1705.9999, 1027)
+rotation = 1.0695626
+texture = ExtResource("5_t8ne5")
+
+[node name="Rat" type="Sprite2D" parent="." unique_id=27899106]
+position = Vector2(1786.0001, 1020)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_8467h")
+
+[node name="TrashRocketIntroTheme" type="AudioStreamPlayer" parent="." unique_id=1704363413]
+stream = ExtResource("7_t8ne5")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

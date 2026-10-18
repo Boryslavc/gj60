@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqfs1r3sf3v12"
+path="res://.godot/imported/rocket failure stab.mp3-aba341c9565dfb4e1d4aebabb62594ff.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/rocket failure stab.mp3"
+dest_files=["res://.godot/imported/rocket failure stab.mp3-aba341c9565dfb4e1d4aebabb62594ff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
