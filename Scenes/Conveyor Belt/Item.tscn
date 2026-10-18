@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://brfbvaygpgv4r" path="res://icon.svg" id="2_u06aw"]
 
 [node name="Item" type="Node2D" unique_id=1454775700]
-scale = Vector2(0.4, 0.4)
 script = ExtResource("1_76mu4")
+speed = 64.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1816966401]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1944726718]
 texture = ExtResource("2_u06aw")

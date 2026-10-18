@@ -5,10 +5,11 @@ extends Node2D
 @export var metal_port_count: int
 @export var spawn_interval = 2
 
-var item: PackedScene = load("res://Scenes/item.tscn")
+@export var item: PackedScene
+@export var conveyor_map: ConveyorMap
 
-var trash_sprite = load("res://Assets/cardboard.png")
-var metal_sprite = load("res://Assets/rocketPiece1.png")
+@export var trash_sprite: Texture2D
+@export var metal_sprite: Texture2D
 
 var timers: Array[Timer] = []
 
@@ -59,21 +60,25 @@ func _on_timer_timeout() -> void:
 func _spawn_metal_part():
 	var output_port_number = _pick_random_output_port()
 	var metal_part = item.instantiate()
+	metal_part.type = Item.Type.METAL
 	var texture_m = metal_part.get_child(0) as Sprite2D
 	texture_m.texture = metal_sprite
 	
 	var port = output_ports[output_port_number]
-	metal_part.position = port.position + Vector2(0, -10)#assuming all output ports are at the bottom
+	metal_part.conveyor_map = conveyor_map
+	metal_part.position = to_local(port.global_position)
 	add_child(metal_part)
 	
 func _spawn_trash_part():
 	var output_port_number = _pick_random_output_port()
 	var trash_past = item.instantiate()
+	trash_past.type = Item.Type.TRASH
 	var texture_t = trash_past.get_child(0) as Sprite2D
 	texture_t.texture = trash_sprite
 	
 	var port = output_ports[output_port_number]
-	trash_past.position = port.position + Vector2(0, -10)
+	trash_past.conveyor_map = conveyor_map
+	trash_past.position = to_local(port.global_position)
 	add_child(trash_past)
 	
 func _pick_random_output_port():

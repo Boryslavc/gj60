@@ -1,42 +1,79 @@
-Building a Level with Conveyor Belts and Switches
-1. Starting Point
-The easiest way is to duplicate Scenes/TestLevel.tscn and build on that. 
-The TileSet is currently embedded in that scene and not saved as a separate file, so a new empty scene would not have it.
-Everything happens on one TileMapLayer with the script Data/Conveyor/conveyor_map.gd attached.
+# Building a Level
+## Overview
 
-2. Painting Conveyor Belts
-Straight pieces: atlas rows 0–3, one per direction.
-Curves: atlas rows 4–11, both turning directions for every exit.
-Only paint tiles from column 0. Columns 1–3 are animation frames that Godot plays on its own.
-The arrow shows the running direction. The direction you paint a belt in is its starting direction.
-A belt must be continuous: the exit of each tile has to lead into the entry of the next one.
+| Part | Scene / File | What it does |
+|---|---|---|
+| Conveyor map | `TileMapLayer` + `Data/Conveyor/conveyor_map.gd` | Holds belts and switches, handles switch controls, keeps items from overlapping |
+| TileSet | `Data/Conveyor/conveyor_tileset.tres` | Shared by all levels. Stores direction and entry of every belt tile |
+| Switch | `Scenes/Conveyor Belt/Switch.tscn` | Gives a switch tile its number key and forbidden directions |
+| Item | `Scenes/Conveyor Belt/Item.tscn` | Moves along the belts. Is either metal or trash |
+| OutputPort | `Scenes/Conveyor Belt/OutputPort.tscn` | Where items are **created** (used by the generator) |
+| InputPort | `Scenes/Conveyor Belt/InputPort.tscn` | **Takes in** metal |
+| TrashPort | `Scenes/Conveyor Belt/TrashPort.tscn` | **Takes in** trash |
+| Generator | `Data/Items/item_generator.gd` | Spawns items at the OutputPorts |
 
-3. Painting Switches
-Use the blue arrows: 0,12 (up), 1,12 (right), 0,13 (left), 1,13 (down). The arrow is the switch’s starting direction.
-Do not paint the orange and brown arrows (rows 14–15). The game places those itself, for “selected” and for “blink”.
+The easiest start is to **duplicate `Scenes/Playable Scenes/level1.tscn`**. It already contains all parts, correctly connected.
 
-4. Give Every Switch a Switch Node
-Drag Scenes/Switch.tscn into the scene as a child of the TileMapLayer.
-Place the node exactly on the switch tile. The easiest way is with snapping turned on (magnet icon). Under “Configure Snap…” set Grid Offset to 32, 32 and Grid Step to 64, 64.
-In the node’s inspector:
-Key: the number key that selects this switch (1–10, where 10 is the 0 key). Each number may be used only once.
-Forbidden Directions: tick every side the switch must never point to:
-the side the belt from the input port comes from (otherwise the player can reverse that belt),
-every side without a belt (otherwise items run into nothing).
+## 1. Conveyor Map
+- One `TileMapLayer` with the script `conveyor_map.gd`.
+- Its **Tile Set** must be `conveyor_tileset.tres`. In the inspector, use the arrow next to *Tile Set* → **Load**. Never create a new TileSet inside a scene.
+- Switches, InputPorts and TrashPorts are **children** of this node.
 
-5. How It Behaves In Game
-Number key: selects the switch, and it turns orange.
-Arrow keys or WASD: set the selected switch to that direction. If a belt there runs towards the switch, it reverses and then runs away from it.
-The switch briefly blinks brown and stays as it is if
-the direction is forbidden in the inspector, or
-the switch at the other end of the belt already points into that belt. Whoever takes a belt first keeps it.
-You set how long the blink lasts on the TileMapLayer under Blink Duration.
+## 2. Painting Belts
+- **Straight pieces:** atlas rows 0–3. **Curves:** atlas rows 4–11.
+- Only paint tiles from **column 0**. Columns 1–3 are animation frames.
+- **The arrow is the running direction.** The direction you paint is the starting direction.
+- A belt must be continuous: each tile's exit leads into the next tile's entry.
 
-6. Checking
-Start the level with F6 while the scene is open. F5 starts the main scene.
-Red errors in the debugger at start mean:
-“… does not sit on a switch tile”: the switch node is next to its tile.
-“Key … is used by … and …”: two switches have the same number.
+## 3. Switches
+1. Paint a **blue arrow**: 0,12 (up), 1,12 (right), 0,13 (left), 1,13 (down). The arrow is the starting direction.
+   Do **not** paint the orange or brown arrows (rows 14–15). The game uses them for "selected" and "blink".
+2. Add `Switch.tscn` as a child of the conveyor map and place it **exactly on** the switch tile.
+   Tip: turn on snapping (magnet icon) → *Configure Snap…* → Grid Offset `32, 32`, Grid Step `64, 64`.
+3. In the inspector:
+   - **Key:** number key that selects this switch (1–10, 10 = key 0). Each number only once.
+   - **Forbidden Directions:** tick every side the switch must **never** point to:
+	 - the side the belt from an OutputPort comes from (otherwise the player can reverse that belt),
+	 - every side without a belt (otherwise items run into nothing).
 
-7. Not Tested Yet
-Two switches directly next to each other, with no belt in between. Avoid that for now.
+## 4. Ports
+**OutputPort** (items appear here)
+- Place it on the **first tile** of a belt. Its place in the scene tree does not matter.
+- Add it to the generator's **Output Ports** list.
+
+**InputPort / TrashPort** (items go in here)
+- Add as a **child of the conveyor map**.
+- Place it on the **empty cell right after the last belt tile**. That cell must have **no tile**, otherwise items drive on.
+- Connect its signal **`part_fed`** to the generator: select the port → *Node → Signals* → `part_fed` → Generator → method `_on_port_fed`.
+- After taking in an item, the port is blocked for a while and shows its second frame. Items behind it queue up.
+
+Default block times (seconds), adjustable in each port's inspector:
+
+| Item | InputPort | TrashPort |
+|---|---|---|
+| Metal | 2 | 4 |
+| Trash | 4 | 1 |
+
+## 5. Generator
+
+A `Node2D` with `item_generator.gd`. Inspector fields:
+
+| Field | Value |
+|---|---|
+| Output Ports | all OutputPorts of the level (no empty slots!) |
+| Item | `Scenes/Conveyor Belt/Item.tscn` |
+| Conveyor Map | the conveyor map node |
+| Trash Sprite / Metal Sprite | a PNG from `Assets/Sprites` |
+| Trash Port Count / Metal Port Count | number of TrashPorts / InputPorts |
+| Spawn Interval | seconds between two items |
+
+## 6. Controls
+
+- **Number keys 1–0** (also numpad) select a switch. It turns orange.
+- **Arrow keys / WASD** set its direction. A belt it points at that runs towards it reverses.
+- The switch **blinks** and keeps its direction if the direction is forbidden, or if the switch at the other end of that belt already points into it. Whoever takes a belt first keeps it.
+
+## Known Limitations
+
+- Two switches **directly next to each other** without a belt in between are not handled. Avoid this.
+- If the generator spawns an item while the OutputPort's cell is still occupied, both items overlap briefly before the new one queues up.

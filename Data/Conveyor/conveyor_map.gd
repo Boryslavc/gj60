@@ -1,3 +1,4 @@
+class_name ConveyorMap
 extends TileMapLayer
 ## Conveyor map: the player selects a switch with the number keys and turns it with the arrow keys.
 ## The active switch makes the belt it points at run away from it.
@@ -24,6 +25,8 @@ var _belt_tiles: Dictionary[Array, Array] = {}
 var _switches: Dictionary[int, Switch] = {}
 ## Key of the selected switch, 0 = none
 var _selected_key := 0
+## Cell -> node that holds it (an item, or later a blocked port). One holder per cell.
+var _occupied: Dictionary[Vector2i, Node] = {}
 
 
 func _ready() -> void:
@@ -44,6 +47,24 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 
+## Reserves the cell for the holder. Returns false if someone else holds it.
+func try_reserve(cell: Vector2i, holder: Node) -> bool:
+	var current = _occupied.get(cell)
+	if is_instance_valid(current) and current != holder:
+		return false
+	_occupied[cell] = holder
+	return true
+
+
+## Frees the cell, but only if this holder has it.
+func release(cell: Vector2i, holder: Node) -> void:
+	if _occupied.get(cell) == holder:
+		_occupied.erase(cell)
+
+## Who holds the cell, or null if it is free.
+func get_holder(cell: Vector2i) -> Node:
+	var holder = _occupied.get(cell)
+	return holder if is_instance_valid(holder) else null
 
 ## Reads the TileSet once: switch tiles by direction, belt tiles by entry and direction.
 func _collect_tiles() -> void:
