@@ -31,20 +31,26 @@ var w_is_last_pressed = false
 var active_items: Array[Node2D] = []
 var reached_trash = false
 var spawned_second_item = false
+var asked_for_switch_2 = false
+
+## Waits after the rocket part arrived before pointing out the second switch.
+var _switch_hint_timer := Timer.new()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_1 and not spawned_second_item:
+	if event is InputEventKey and event.pressed and not event.is_echo():
+		if event.is_action_pressed("switch_1") and not spawned_second_item:
 			pressed_one = true
-			hint_label.text = "Press [s] to point down."
-		elif event.keycode == KEY_S and pressed_one:
+			hint_label.text = "Press [S] or [Down] to point down."
+		elif event.is_action_pressed("switch_down") and pressed_one:
 			s_is_last_pressed = true
 			w_is_last_pressed = false
 			print("s last true")
-		elif event.keycode == KEY_W and spawned_second_item:
+		elif event.is_action_pressed("switch_up") and spawned_second_item:
 			w_is_last_pressed = true
 			s_is_last_pressed = false
 			print("w last true")
+		elif event.is_action_pressed("switch_2") and asked_for_switch_2:
+			hint_label.text = "That's how you play the game.\nPress [Enter] to begin."
 		else:
 			s_is_last_pressed = false
 			w_is_last_pressed = false
@@ -55,6 +61,10 @@ func _ready() -> void:
 	_spawn_trash_part()
 	pause_rect = pause_here_color_rect.get_global_rect()
 	pause_trash = reached_trash_color_rect.get_global_rect()
+	_switch_hint_timer.one_shot = true
+	_switch_hint_timer.wait_time = 2.0
+	_switch_hint_timer.timeout.connect(_ask_for_switch_2)
+	add_child(_switch_hint_timer)
 	
 func _process(delta: float) -> void:
 	for item_node in active_items:
@@ -82,10 +92,7 @@ func _process(delta: float) -> void:
 		if not spawned_second_item and pause_trash.has_point(item_node.global_position):
 			reached_trash = true
 			active_items.erase(active_items[0])
-			hint_label.text = "Next item is a rocket part.
-							Press [w] to point up
-							If you press [a] or [d] error
-							This one can't go left or right"
+			hint_label.text = "Next item is a rocket part.\nPress [W] or [Up] to point up.\nThis switch can't point left or right."
 			_spawn_metal_part()
 			spawned_second_item = true
 
@@ -142,7 +149,9 @@ func _on_port_fed(port_type,timeout):
 		trash_ports_free -= 1
 	if port_type == "metal":
 		metal_ports_free -= 1
-	
+		if spawned_second_item:
+			_switch_hint_timer.start()
+
 	for timer in timers:
 		if timer.is_stopped():
 			timer.wait_time = timeout
@@ -152,6 +161,11 @@ func _on_port_fed(port_type,timeout):
 			
 	
 	
+func _ask_for_switch_2() -> void:
+	asked_for_switch_2 = true
+	hint_label.text = "You can also select other switches.\nPress [2]."
+
+
 func _on_port_freed_up(port_type):
 	if port_type == "metal":
 		metal_ports_free += 1

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://baea1kyy7a3w7"]
 
 [ext_resource type="Script" uid="uid://modmstlefwbg" path="res://Data/credits.gd" id="1_1gjp5"]
+[ext_resource type="Theme" uid="uid://pq4bga7u0c3f" path="res://Assets/base_theme.tres" id="1_8rmya"]
 [ext_resource type="Texture2D" uid="uid://6wjj0vtyiods" path="res://Assets/Untitled228_20261018115931.png" id="2_q4qny"]
 
 [node name="Credits" type="Control" unique_id=1712326295]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8rmya")
 script = ExtResource("1_1gjp5")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1416454421]

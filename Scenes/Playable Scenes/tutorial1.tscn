@@ -6,17 +6,87 @@
 [ext_resource type="PackedScene" uid="uid://bg2btifk7ucyh" path="res://Scenes/Conveyor Belt/OutputPort.tscn" id="4_uuxcb"]
 [ext_resource type="PackedScene" uid="uid://dwpip277n60u7" path="res://Scenes/Conveyor Belt/InputPort.tscn" id="5_m1qxc"]
 [ext_resource type="PackedScene" uid="uid://c3tpaqhj1g7vh" path="res://Scenes/Conveyor Belt/TrashPort.tscn" id="6_hfjq5"]
-[ext_resource type="Script" uid="uid://dekpeahyhquco" path="res://tutorialItemGenerator.gd" id="7_pnwn6"]
+[ext_resource type="Script" uid="uid://dekpeahyhquco" path="res://Data/tutorialItemGenerator.gd" id="7_pnwn6"]
 [ext_resource type="PackedScene" uid="uid://bjt27fvrtf3rw" path="res://Scenes/Conveyor Belt/Item.tscn" id="8_rl7m4"]
 [ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="9_ljq6m"]
 [ext_resource type="Texture2D" uid="uid://njlenqnob6bl" path="res://Assets/Sprites/rocketPiece1_72px.png" id="10_4vkyp"]
+[ext_resource type="Texture2D" uid="uid://dwlvx2swl2dkv" path="res://Assets/sprite_sheet.png" id="11_oofrc"]
+[ext_resource type="Script" uid="uid://rv2rn5arq014" path="res://Data/skip_hint.gd" id="12_sltkt"]
+[ext_resource type="PackedScene" uid="uid://be5kj806p4lxj" path="res://Scenes/Conveyor Belt/Item_demo1.tscn" id="13_uuxcb"]
+[ext_resource type="PackedScene" uid="uid://cjmci4pljxto8" path="res://Scenes/Conveyor Belt/Item_demo2.tscn" id="14_m1qxc"]
+[ext_resource type="PackedScene" uid="uid://dbx4ugvuugqn8" path="res://Scenes/Conveyor Belt/Item_demo3.tscn" id="15_hfjq5"]
 
-[node name="Level1" type="Node2D" unique_id=890376136]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sltkt"]
+texture = ExtResource("11_oofrc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/animation_frame_0/duration = 0.3
+8:0/animation_frame_1/duration = 0.3
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/animation_frame_0/duration = 0.1
+3:3/animation_frame_1/duration = 0.1
+3:3/animation_frame_2/duration = 0.1
+3:3/animation_frame_3/duration = 0.1
+3:3/animation_frame_4/duration = 0.1
+3:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uuxcb"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_sltkt")
+
+[node name="Tutorial" type="Node2D" unique_id=890376136]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2122639436]
 position = Vector2(210, -26)
 scale = Vector2(1.5, 1.5)
-tile_map_data = PackedByteArray("AAAKAAcAAAAAAAIAAAACAAUAAAABABAAAAADAAUAAAAAAAEAAAAEAAUAAAAAAAEAAAAFAAUAAAAAAAEAAAAGAAUAAAAAAAEAAAAHAAUAAAAAAAEAAAAIAAUAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAMAAAAAAAQAAAAKAAQAAAAAAAAAAAAKAAYAAAAAAAIAAAAKAAgAAAAAAAsAAAALAAMAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAMAAAAAAAoAAAAMAAgAAAAAAAUAAAAKAAUAAAAAAA0AAAA=")
+tile_map_data = PackedByteArray("AAAKAAcAAAAAAAIAAAACAAUAAAABABAAAAADAAUAAAAAAAEAAAAEAAUAAAAAAAEAAAAFAAUAAAAAAAEAAAAGAAUAAAAAAAEAAAAHAAUAAAAAAAEAAAAIAAUAAAAAAAEAAAAJAAUAAAAAAAEAAAAKAAMAAAAAAAQAAAAKAAQAAAAAAAAAAAAKAAYAAAAAAAIAAAAKAAgAAAAAAAsAAAALAAMAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAMAAAAAAAoAAAAMAAgAAAAAAAUAAAAKAAUAAAAAAA0AAAANAAUAAAAAAAwAAAANAAQAAAAAAAAAAAAOAAUAAAAAAAEAAAANAAYAAAAAAAIAAAAMAAUAAAAAAAMAAAD//woAAAAAAAsAAAD//wkAAAAAAAgAAAACAAkAAAAAAAkAAAACAAoAAAAAAAoAAAAAAAoAAAAAAAEAAAABAAoAAAAAAAEAAAABAAkAAAAAAAMAAAAAAAkAAAAAAAMAAAA=")
 tile_set = ExtResource("1_pnwn6")
 script = ExtResource("2_oofrc")
 
@@ -36,6 +106,10 @@ rotation = 3.1503193
 port_type = "trash"
 metal_block_time = 5.0
 trash_block_time = 0.5
+
+[node name="Switch2" parent="TileMapLayer" unique_id=852701197 instance=ExtResource("3_sltkt")]
+position = Vector2(862.6667, 337.33334)
+key = 2
 
 [node name="Generator" type="Node2D" parent="." unique_id=1822935364 node_paths=PackedStringArray("output_ports", "conveyor_map")]
 position = Vector2(242, 6)
@@ -105,6 +179,33 @@ theme_override_font_sizes/font_size = 21
 text = "Press [1] to select the switch"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Decoration" type="TileMapLayer" parent="." unique_id=1368153426]
+z_index = -10
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAHAAEAAAAGAAIAAAAHAAAAAAAIAAAAAAAAAAAAAAAGAAAAAAAAAAEAAAAGAAIAAAAAAAIAAAAGAAIAAAAAAAMAAAAGAAIAAAAAAAQAAAAGAAIAAAAAAAUAAAAGAAIAAAAAAAYAAAAGAAIAAAAAAAcAAAAGAAIAAAAAAAgAAAAGAAIAAAABAAAAAAAHAAAAAAABAAEAAAAGAAIAAAABAAIAAAAGAAIAAAABAAMAAAAGAAIAAAABAAQAAAAGAAIAAAABAAUAAAAJAAIAAAABAAYAAAAGAAIAAAABAAcAAAAGAAIAAAABAAgAAAAGAAIAAAACAAAAAAAHAAAAAAACAAEAAAAGAAIAAAACAAIAAAAGAAIAAAACAAMAAAAGAAIAAAACAAQAAAAGAAIAAAACAAUAAAAGAAIAAAACAAYAAAAGAAIAAAACAAcAAAAGAAIAAAACAAgAAAAGAAIAAAADAAAAAAAHAAAAAAADAAEAAAAGAAIAAAADAAIAAAAGAAIAAAADAAMAAAAGAAIAAAADAAQAAAAGAAIAAAADAAUAAAAGAAIAAAADAAYAAAAGAAIAAAADAAcAAAAGAAIAAAADAAgAAAAGAAIAAAAEAAAAAAAHAAAAAAAEAAEAAAAGAAIAAAAEAAIAAAAGAAIAAAAEAAMAAAAGAAIAAAAEAAQAAAAGAAIAAAAEAAUAAAAGAAIAAAAEAAYAAAAGAAIAAAAEAAcAAAAGAAIAAAAEAAgAAAAGAAIAAAAFAAAAAAAHAAAAAAAFAAEAAAAGAAIAAAAFAAIAAAAGAAIAAAAFAAMAAAAGAAIAAAAFAAQAAAAGAAIAAAAFAAUAAAAGAAIAAAAFAAYAAAAGAAIAAAAFAAcAAAAGAAIAAAAFAAgAAAAGAAIAAAAGAAAAAAAHAAAAAAAGAAEAAAAGAAIAAAAGAAIAAAAGAAIAAAAGAAMAAAAGAAIAAAAGAAQAAAAGAAIAAAAGAAUAAAAGAAIAAAAGAAYAAAAGAAIAAAAGAAcAAAAGAAIAAAAGAAgAAAAGAAIAAAAHAAIAAAAGAAIAAAAHAAMAAAAGAAIAAAAHAAQAAAAGAAIAAAAHAAUAAAAJAAIAAAAHAAYAAAAGAAIAAAAHAAcAAAAGAAIAAAAHAAgAAAAGAAIAAAAIAAAAAAAGAAEAAAAIAAEAAAAGAAIAAAAIAAIAAAAGAAIAAAAIAAMAAAAGAAIAAAAIAAQAAAAGAAIAAAAIAAUAAAAGAAIAAAAIAAYAAAAGAAIAAAAIAAcAAAAGAAIAAAAIAAgAAAAGAAIAAAAJAAAAAAAHAAAAAAAJAAEAAAAGAAIAAAAJAAIAAAAGAAIAAAAJAAMAAAAGAAIAAAAJAAQAAAAGAAIAAAAJAAUAAAAGAAIAAAAJAAYAAAAGAAIAAAAJAAcAAAAGAAIAAAAJAAgAAAAGAAIAAAAKAAAAAAAHAAAAAAAKAAEAAAAGAAIAAAAKAAIAAAAGAAIAAAAKAAMAAAAGAAIAAAAKAAQAAAAGAAIAAAAKAAUAAAAGAAIAAAAKAAYAAAAGAAIAAAAKAAcAAAAGAAIAAAAKAAgAAAAGAAIAAAALAAAAAAAHAAAAAAALAAEAAAAGAAIAAAALAAIAAAAGAAIAAAALAAMAAAAGAAIAAAALAAQAAAAGAAIAAAALAAUAAAAJAAIAAAALAAYAAAAGAAIAAAALAAcAAAAGAAIAAAALAAgAAAAGAAIAAAAMAAAAAAAHAAAAAAAMAAEAAAAGAAIAAAAMAAIAAAAGAAIAAAAMAAMAAAAGAAIAAAAMAAQAAAAGAAIAAAAMAAUAAAAGAAIAAAAMAAYAAAAGAAIAAAAMAAcAAAAGAAIAAAAMAAgAAAAGAAIAAAANAAAAAAAHAAAAAAANAAEAAAAGAAIAAAANAAIAAAAGAAIAAAANAAMAAAAGAAIAAAANAAQAAAAGAAIAAAANAAUAAAAGAAIAAAANAAYAAAAGAAIAAAANAAcAAAAGAAIAAAANAAgAAAAGAAIAAAAOAAAAAAAHAAEAAAAOAAEAAAAGAAIAAAAOAAIAAAAHAAIAAAAOAAMAAAAJAAIAAAAOAAQAAAAGAAIAAAAOAAUAAAAGAAIAAAAOAAYAAAAGAAIAAAAOAAcAAAAGAAIAAAAOAAgAAAAGAAIAAAA=")
+tile_set = SubResource("TileSet_uuxcb")
+
+[node name="SkipHint" type="CanvasLayer" parent="." unique_id=1709208194]
+script = ExtResource("12_sltkt")
+
+[node name="Label" type="Label" parent="SkipHint" unique_id=2082761071]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 48
+text = "Press Enter to skip tutorial"
+
+[node name="Item" parent="." unique_id=1454775700 node_paths=PackedStringArray("conveyor_map") instance=ExtResource("13_uuxcb")]
+position = Vector2(352, 864)
+conveyor_map = NodePath("../TileMapLayer")
+
+[node name="Item2" parent="." unique_id=1726546994 node_paths=PackedStringArray("conveyor_map") instance=ExtResource("14_m1qxc")]
+position = Vector2(288, 992)
+conveyor_map = NodePath("../TileMapLayer")
+
+[node name="Item3" parent="." unique_id=1288904826 node_paths=PackedStringArray("conveyor_map") instance=ExtResource("15_hfjq5")]
+position = Vector2(160, 928)
+conveyor_map = NodePath("../TileMapLayer")
 
 [connection signal="part_fed" from="TileMapLayer/InputPort2" to="Generator" method="_on_port_fed"]
 [connection signal="part_fed" from="TileMapLayer/TrashPort2" to="Generator" method="_on_port_fed"]

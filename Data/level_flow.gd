@@ -2,6 +2,7 @@ extends Node
 
 ## Order of the levels. New levels are appended here.
 const LEVELS: Array[String] = [
+	"res://Scenes/Playable Scenes/tutorial1.tscn",
 	"res://Scenes/Playable Scenes/level1.tscn",
 	"res://Scenes/Playable Scenes/level2.tscn",
 	"res://Scenes/Playable Scenes/level3.tscn",
