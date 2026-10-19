@@ -4,79 +4,96 @@
 [ext_resource type="Texture2D" uid="uid://njlenqnob6bl" path="res://Assets/Sprites/rocketPiece1_72px.png" id="2_c25s4"]
 [ext_resource type="Texture2D" uid="uid://2v54nnremtd" path="res://Assets/Sprites/cardboard.png" id="3_cnwcv"]
 [ext_resource type="AudioStream" uid="uid://c82uoh5t03jlf" path="res://Assets/Audio/trash rocket intro theme.mp3" id="4_6fa18"]
+[ext_resource type="Texture2D" uid="uid://w6x41ldtsl26" path="res://Assets/Sprites/port.png" id="5_uuiai"]
+[ext_resource type="StyleBox" path="res://Assets/hud_panel.tres" id="6_hudpn"]
 
 [node name="LvlManager" type="Node2D" unique_id=1183105098]
 script = ExtResource("1_qv215")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1908950241]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=863737783]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 61
-theme_override_constants/margin_top = 62
+[node name="CountersContainer" type="PanelContainer" parent="CanvasLayer" unique_id=325744758]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 661.0
+offset_bottom = 244.0
+theme_override_styles/panel = ExtResource("6_hudpn")
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer" unique_id=250602590]
+[node name="Counters" type="VBoxContainer" parent="CanvasLayer/CountersContainer" unique_id=1746764602]
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 126
-text = "0/0"
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer" unique_id=1356966498]
-offset_left = 218.0
-offset_top = -247.0
-offset_right = 401.0
-offset_bottom = 123.0
-theme_override_constants/margin_left = 111
-theme_override_constants/margin_top = 298
+[node name="RocketRow" type="HBoxContainer" parent="CanvasLayer/CountersContainer/Counters" unique_id=329399330]
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer2" unique_id=1765807200]
+[node name="RocketCount" type="Label" parent="CanvasLayer/CountersContainer/Counters/RocketRow" unique_id=250602590]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CountersContainer/Counters/RocketRow" unique_id=1765807200]
 layout_mode = 2
 texture = ExtResource("2_c25s4")
+stretch_mode = 6
 
-[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer" unique_id=65121465]
-offset_left = 226.0
-offset_top = -239.0
-offset_right = 407.0
-offset_bottom = 237.0
-theme_override_constants/margin_left = 109
-theme_override_constants/margin_top = 404
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer3" unique_id=1942897798]
+[node name="Label3" type="Label" parent="CanvasLayer/CountersContainer/Counters/RocketRow" unique_id=777489057]
 layout_mode = 2
-texture = ExtResource("3_cnwcv")
-
-[node name="Label3" type="Label" parent="CanvasLayer" unique_id=777489057]
-offset_left = 407.0
-offset_top = 33.0
-offset_right = 864.0
-offset_bottom = 205.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 61
+theme_override_font_sizes/font_size = 80
 text = "- rocket parts"
 
-[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1229211592]
-offset_left = 411.0
-offset_top = 150.0
-offset_right = 730.0
-offset_bottom = 322.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 61
+[node name="TrashRow" type="HBoxContainer" parent="CanvasLayer/CountersContainer/Counters" unique_id=566372612]
+layout_mode = 2
+
+[node name="TrashCount" type="Label" parent="CanvasLayer/CountersContainer/Counters/TrashRow" unique_id=749925864]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/CountersContainer/Counters/TrashRow" unique_id=1942897798]
+layout_mode = 2
+texture = ExtResource("3_cnwcv")
+stretch_mode = 6
+
+[node name="Label2" type="Label" parent="CanvasLayer/CountersContainer/Counters/TrashRow" unique_id=1229211592]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
 text = "- trash"
 
-[node name="Label4" type="Label" parent="CanvasLayer" unique_id=1667305705]
-offset_left = 1239.0
-offset_top = 54.0
-offset_right = 2127.0
-offset_bottom = 226.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 43
-text = "green = trash processors
-blue = rocket parts processors"
+[node name="LegendContainer" type="PanelContainer" parent="CanvasLayer" unique_id=80515761]
+offset_left = 1200.0
+offset_top = 50.0
+offset_right = 1873.0
+offset_bottom = 200.0
+theme_override_styles/panel = ExtResource("6_hudpn")
+
+[node name="Legend" type="VBoxContainer" parent="CanvasLayer/LegendContainer" unique_id=1504213319]
+layout_mode = 2
+
+[node name="RocketRow" type="HBoxContainer" parent="CanvasLayer/LegendContainer/Legend" unique_id=970010888]
+layout_mode = 2
+
+[node name="RocketPortIcon" type="TextureRect" parent="CanvasLayer/LegendContainer/Legend/RocketRow" unique_id=1362020896]
+layout_mode = 2
+texture = ExtResource("5_uuiai")
+
+[node name="Label" type="Label" parent="CanvasLayer/LegendContainer/Legend/RocketRow" unique_id=1608202135]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = " - Rocket parts processor"
+
+[node name="TrashRow" type="HBoxContainer" parent="CanvasLayer/LegendContainer/Legend" unique_id=1182058292]
+layout_mode = 2
+
+[node name="TrashPortIcon" type="TextureRect" parent="CanvasLayer/LegendContainer/Legend/TrashRow" unique_id=1788364811]
+modulate = Color(0.25490198, 0.8235294, 0, 1)
+layout_mode = 2
+texture = ExtResource("5_uuiai")
+
+[node name="Label" type="Label" parent="CanvasLayer/LegendContainer/Legend/TrashRow" unique_id=632683356]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = " - Trash processor"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=405675088]
 stream = ExtResource("4_6fa18")

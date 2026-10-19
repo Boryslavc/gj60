@@ -73,7 +73,7 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_hem0x")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_en2mm"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8oyr"]
 texture = ExtResource("12_w8oyr")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -136,7 +136,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_mgmb8"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_en2mm")
+sources/0 = SubResource("TileSetAtlasSource_w8oyr")
 
 [node name="Level4" type="Node2D" unique_id=890376136]
 
