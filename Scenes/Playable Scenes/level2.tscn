@@ -145,21 +145,21 @@ sources/0 = SubResource("TileSetAtlasSource_36cr2")
 [node name="Level2" type="Node2D" unique_id=890376136]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2122639436]
-tile_map_data = PackedByteArray("AAAHAAcAAAAAAAMAAAAIAAcAAAAAAAMAAAAJAAcAAAAAAAMAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAwAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAABAAAAALAAcAAAAAAAEAAAAMAAcAAAAAAAEAAAANAAcAAAAAAAEAAAAOAAcAAAABAAwAAAAPAAcAAAAAAAEAAAAQAAcAAAAAAAEAAAARAAcAAAAAAAEAAAASAAYAAAAAAAAAAAASAAcAAAAAAAwAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAABAAAAATAAcAAAAAAAEAAAAUAAcAAAAAAAEAAAAVAAcAAAAAAAEAAAAOAA8AAAAAABAAAAAOAA4AAAAAAAAAAAAOAA0AAAAAAAAAAAAOAAwAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAgAAAAAAAAAAAAKAAUAAAAAAAAAAAASAAUAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAKAAoAAAAAAAAAAAAKAAsAAAAAAAwAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAABAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAwAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAABAAAAAOAA8AAAAAABAAAAAOAA4AAAAAAAAAAAAOAA0AAAAAAAAAAAAOAAwAAAAAAAAAAAAOAAsAAAABAAwAAAAKAAkAAAAAAAAAAAASAAkAAAAAAAAAAAAHAAsAAAAAAAMAAAAIAAsAAAAAAAMAAAAJAAsAAAAAAAMAAAALAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAARAAsAAAAAAAEAAAATAAsAAAAAAAEAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAA=")
 tile_set = ExtResource("1_it55s")
 script = ExtResource("2_3spxy")
 
 [node name="Switch" parent="TileMapLayer" unique_id=2032465549 instance=ExtResource("3_cw620")]
-position = Vector2(672, 480)
+position = Vector2(672, 736)
 forbidden_directions = 4
 
 [node name="Switch2" parent="TileMapLayer" unique_id=514968540 instance=ExtResource("3_cw620")]
-position = Vector2(928, 480)
+position = Vector2(928, 736)
 key = 2
 forbidden_directions = 5
 
 [node name="Switch3" parent="TileMapLayer" unique_id=1674581409 instance=ExtResource("3_cw620")]
-position = Vector2(1184, 480)
+position = Vector2(1184, 736)
 key = 3
 forbidden_directions = 4
 
@@ -173,20 +173,20 @@ position = Vector2(928, 928)
 position = Vector2(1184, 928)
 
 [node name="InputPort" parent="TileMapLayer" unique_id=162405446 instance=ExtResource("5_xkl5w")]
-position = Vector2(672, 288)
+position = Vector2(672, 544)
 
 [node name="InputPort2" parent="TileMapLayer" unique_id=1537163729 instance=ExtResource("5_xkl5w")]
-position = Vector2(1184, 288)
+position = Vector2(1184, 544)
 
 [node name="TrashPort" parent="TileMapLayer" unique_id=542074340 instance=ExtResource("6_tx08i")]
-position = Vector2(416, 480)
+position = Vector2(416, 736)
 rotation = -1.5707964
 port_type = "trash"
 metal_block_time = 5.0
 trash_block_time = 0.5
 
 [node name="TrashPort2" parent="TileMapLayer" unique_id=39865729 instance=ExtResource("6_tx08i")]
-position = Vector2(1440, 480)
+position = Vector2(1440, 736)
 rotation = 1.5707964
 port_type = "trash"
 metal_block_time = 5.0

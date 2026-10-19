@@ -61,17 +61,16 @@ horizontal_alignment = 1
 
 [node name="Names" type="Label" parent="CenterContainer/VBoxContainer" unique_id=241923818]
 layout_mode = 2
-text = "Names of the People working on this Project
+text = "Names of the People working on this Project:
 
 Chrizepam - https://itch.io/profile/moderategamer
 Marc Heizmann - https://itch.io/profile/mamamarc
 ka-pow - https://itch.io/profile/kapowgames
 _just_a_sailor_ - https://black-pearl-studios.itch.io/
-garnold
+bloodbrow  - https://bloodbrow.itch.io/
 
 
 "
-horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=470989901]
 layout_mode = 2
